@@ -1,5 +1,6 @@
 package by.bsuir.algorithms;
 
+import java.security.MessageDigestSpi;
 import java.util.*;
 
 public class GridMethod {
@@ -27,8 +28,15 @@ public class GridMethod {
     }
 
     public static String encrypt(String message) throws RuntimeException {
+
         if (message.length() > MESSAGE_LENGTH) {
-            throw new RuntimeException("Invalid input parameters! Message is too long");
+            throw new RuntimeException("Invalid input parameters! Message must be 16 characters long");
+        }else if(message.length() < MESSAGE_LENGTH){
+            StringBuilder temp = new StringBuilder(message);
+            for (int i = message.length(); i <MESSAGE_LENGTH; i++) {
+                temp.append('*');
+                message =temp.toString();
+            }
         }
         StringBuilder encryptedMessage = new StringBuilder(MESSAGE_LENGTH);
         char[][] matrix = new char[SIDE][SIDE];
@@ -51,6 +59,7 @@ public class GridMethod {
 
     public static String decrypt(String encryptedMessage) {
         StringBuilder decryptedMessage = new StringBuilder(MESSAGE_LENGTH);
+        StringBuilder finalMessage = new StringBuilder(MESSAGE_LENGTH);
         char[][] matrix = new char[SIDE][SIDE];
         int letterPositionInMessage = 0;
         for (int i = 0; i < SIDE; i++) {
@@ -65,7 +74,12 @@ public class GridMethod {
             }
             matrix = rotateClockwise(matrix);
         }
-        return decryptedMessage.toString();
+        for (int i = 0; i < MESSAGE_LENGTH - 1; i++) {
+            if(decryptedMessage.charAt(i) != '*'){
+                finalMessage.append(decryptedMessage.charAt(i));
+            }
+        }
+        return finalMessage.toString();
     }
 
     public static char[][] rotateClockwise(char[][] arr) {
@@ -80,7 +94,7 @@ public class GridMethod {
     }
 
     public static void main(String[] args) {
-        System.out.println(encrypt("ЭТОЛЕКЦИЯПОКРИПТ"));
-        System.out.println(decrypt("ЭКОРПКИТПТЛЦЕОИЯ"));
+        System.out.println(encrypt("ЭТОЛЕКЦИЯПОК11"));
+        System.out.println(decrypt("ЭКО**КИТП*ЛЦЕО*Я"));
     }
 }

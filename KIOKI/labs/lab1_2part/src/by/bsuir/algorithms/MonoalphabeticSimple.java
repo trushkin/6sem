@@ -2,7 +2,7 @@ package by.bsuir.algorithms;
 
 public class MonoalphabeticSimple implements Cryptography {
     @Override
-    public String encryption(String message, int key, char firstCharAlphabet, char lastCharAlphabet) throws RuntimeException {
+    public String encrypt(String message, int key, char firstCharAlphabet, char lastCharAlphabet) throws RuntimeException {
         if (firstCharAlphabet > lastCharAlphabet) {
             throw new RuntimeException("Invalid input parameters! Issue with alphabet");
         }
@@ -13,16 +13,8 @@ public class MonoalphabeticSimple implements Cryptography {
         for (int i = 0; i < message.length(); i++) {
             if (Character.isLetter(message.charAt(i))) {
                 currentSymbol = message.charAt(i);
-                //  symbolCodeAfterEncryption = (char) (currentSymbol + key % alphabetLength);
-                offset =  ((currentSymbol - firstCharAlphabet + key)) % alphabetLength;
-//                    if (symbolCodeAfterEncryption < firstCharAlphabet) {
-//                        encryptedMessage.append((char) (symbolCodeAfterEncryption + alphabetLength));
-//                    } else if (symbolCodeAfterEncryption > lastCharAlphabet) {
-//                       // encryptedMessage.append((char) (symbolCodeAfterEncryption % lastCharAlphabet + firstCharAlphabet - 1));
-//                        encryptedMessage.append((char) (symbolCodeAfterEncryption - alphabetLength));
-//                    } else {
-                encryptedMessage.append((char)(firstCharAlphabet + offset));
-                //}
+                offset = (currentSymbol - firstCharAlphabet + key) % alphabetLength;
+                encryptedMessage.append((char) (firstCharAlphabet + offset));
             } else {
                 throw new RuntimeException("Invalid message! Use symbols " + firstCharAlphabet + "-" + lastCharAlphabet + "");
             }
@@ -31,7 +23,7 @@ public class MonoalphabeticSimple implements Cryptography {
     }
 
     @Override
-    public String decryption(String encryptedMessage, int key, char firstCharAlphabet, char lastCharAlphabet) throws RuntimeException {
+    public String decrypt(String encryptedMessage, int key, char firstCharAlphabet, char lastCharAlphabet) throws RuntimeException {
         if (firstCharAlphabet > lastCharAlphabet) {
             return "Invalid input parameters! Issue with alphabet";
         }
@@ -57,4 +49,5 @@ public class MonoalphabeticSimple implements Cryptography {
         return decryptedMessage.toString();
     }
 }
+
 
