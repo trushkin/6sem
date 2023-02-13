@@ -35,7 +35,7 @@ public class Main {
         decryptedMessage = new MonoalphabeticComplex().decrypt(encryptedMessage, 15, 'a', 'z');
         System.out.println("Decrypted message: " + decryptedMessage);
         response = ENGLISH_ALPHABET.equals(decryptedMessage) ? "Initial message equals decrypted" : "Error! Initial message NOT equals decrypted";
-        System.out.println(response);
+        System.out.println(response) ;
     }
 }
 
