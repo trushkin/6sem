@@ -31,11 +31,11 @@ public class GridMethod {
 
         if (message.length() > MESSAGE_LENGTH) {
             throw new RuntimeException("Invalid input parameters! Message must be 16 characters long");
-        }else if(message.length() < MESSAGE_LENGTH){
+        } else if (message.length() < MESSAGE_LENGTH) {
             StringBuilder temp = new StringBuilder(message);
-            for (int i = message.length(); i <MESSAGE_LENGTH; i++) {
+            for (int i = message.length(); i < MESSAGE_LENGTH; i++) {
                 temp.append('*');
-                message =temp.toString();
+                message = temp.toString();
             }
         }
         StringBuilder encryptedMessage = new StringBuilder(MESSAGE_LENGTH);
@@ -53,7 +53,7 @@ public class GridMethod {
                 encryptedMessage.append(matrix[i][j]);
             }
         }
-       // System.out.println(Arrays.deepToString(matrix));
+        // System.out.println(Arrays.deepToString(matrix));
         return encryptedMessage.toString();
     }
 
@@ -75,7 +75,7 @@ public class GridMethod {
             matrix = rotateClockwise(matrix);
         }
         for (int i = 0; i < MESSAGE_LENGTH - 1; i++) {
-            if(decryptedMessage.charAt(i) != '*'){
+            if (decryptedMessage.charAt(i) != '*') {
                 finalMessage.append(decryptedMessage.charAt(i));
             }
         }
