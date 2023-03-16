@@ -1,67 +1,55 @@
 package by.bsuir;
 
-import jakarta.ejb.Stateful;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.Query;
+import jakarta.ejb.Stateless;
+import jakarta.persistence.*;
 
 import java.util.List;
 
-@Stateful
+
+@Stateless
 public class CustomerServiceBean implements CustomerService {
 
-//    @PersistenceContext(type = PersistenceContextType.EXTENDED)
-//    private EntityManager entityManager;
-//
-//    @Override
-//    public List<Customer> getAll() {
-//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//        CriteriaQuery<Customer> getAll = criteriaBuilder.createQuery(Customer.class);
-//        Root<Customer> root = getAll.from(Customer.class);
-//        getAll.select(root);
-//        return entityManager.createQuery(getAll).getResultList();
-//
-//    }
-
-    private final EntityManagerFactory entityManagerFactory;
-
-    public CustomerServiceBean() {
-        this.entityManagerFactory = Persistence.createEntityManagerFactory("CustomerManagement");
-    }
+    @PersistenceContext(unitName = "CustomerManagement")
+    private EntityManager entityManager;
 
     @Override
     public List<Customer> getAll() {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        // JQL (JPA query language)
         return entityManager.createQuery("select c from Customer c", Customer.class).getResultList();
     }
 
     @Override
     public Customer getCustomerById(int id) {
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        Query query = entityManager.createQuery("select c from Customer c where c.id =:id", Customer.class);
-        query.setParameter("id", id);
-        return (Customer) query.getSingleResult();
+        return entityManager.find(Customer.class, id);
     }
 
-//private final EntityManagerFactory entityManagerFactory;
-//
-//    public CustomerServiceBean() {
-//        this.entityManagerFactory = Persistence.createEntityManagerFactory("CustomerManagement");
-//    }
-//    @Override
-//    public List<Customer> getAll() {
-//        EntityManager entityManager = entityManagerFactory.createEntityManager();
-//        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
-//        CriteriaQuery<Customer> getAll = criteriaBuilder.createQuery(Customer.class);
-//        Root<Customer> root = getAll.from(Customer.class);
-//        getAll.select(root);
-//        try {
-//            return entityManager.createQuery(getAll).getResultList();
-//        } finally {
-//            entityManager.close();
-//        }
-//    }
+    @Override
+    public void insert(Customer customer) {
+            entityManager.persist(customer);
+    }
 
+    @Override
+    public boolean delete(int id) {
+        Customer customerToDelete = entityManager.find(Customer.class, id);
+        if (customerToDelete != null) {
+            entityManager.remove(customerToDelete);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean update(Customer updatedDetails) {
+        Customer customerToUpdate = entityManager.find(Customer.class, updatedDetails.getId());
+        if(customerToUpdate != null){
+            customerToUpdate.setName(updatedDetails.getName());
+            customerToUpdate.setSurname(updatedDetails.getSurname());
+            customerToUpdate.setCity(updatedDetails.getCity());
+            customerToUpdate.setCreditLimit(updatedDetails.getCreditLimit());
+            customerToUpdate.setMainAddress(updatedDetails.getMainAddress());
+            customerToUpdate.setAdditionalAddress(updatedDetails.getAdditionalAddress());
+            entityManager.merge(customerToUpdate);
+            return true;
+        }
+        return false;
+    }
 }

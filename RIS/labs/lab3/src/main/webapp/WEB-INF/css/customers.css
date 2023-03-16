@@ -2,3 +2,14 @@ table, th, td {
     border: 1px solid;
     text-align: center;
 }
+
+.error-message {
+    color: crimson;
+}
+
+hr {
+    border: none;
+    border-top: 3px double black;
+    color: black;
+    height: 5px;
+}

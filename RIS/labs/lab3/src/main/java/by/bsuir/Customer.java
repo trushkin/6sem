@@ -30,6 +30,25 @@ public class Customer {
     public Customer() {
     }
 
+    public Customer(String name, String surname, String city, Integer creditLimit, String mainAddress, String additionalAddress) {
+        this.name = name;
+        this.surname = surname;
+        this.city = city;
+        this.creditLimit = creditLimit;
+        this.mainAddress = mainAddress;
+        this.additionalAddress = additionalAddress;
+    }
+
+    public Customer(Integer id, String name, String surname, String city, Integer creditLimit, String mainAddress, String additionalAddress) {
+        this.id = id;
+        this.name = name;
+        this.surname = surname;
+        this.city = city;
+        this.creditLimit = creditLimit;
+        this.mainAddress = mainAddress;
+        this.additionalAddress = additionalAddress;
+    }
+
     public Integer getId() {
         return id;
     }
