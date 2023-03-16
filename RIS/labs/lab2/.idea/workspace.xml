@@ -9,39 +9,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5a1fb871-87a3-48e2-a85e-e0fcfcd6a06e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/train/tickets/RailwayTicket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/train/tickets/TicketService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/train/tickets/TicketServiceBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/train/tickets/TicketServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/train/tickets/TicketStringSerializer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/by/train/tickets/testServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/css/tickets.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/tickets.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../samples/LR2/.idea/LR2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../samples/lab2/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../samples/lab2/.idea/lab2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../samples/lab2/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../samples/lab2/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../samples/lab2/lab2/lab2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../test/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../KIOKI/labs/lab1_2part/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../KIOKI/labs/lab1_2part/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../KIOKI/labs/lab1_2part/src/by/bsuir/algorithms/GridMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../KIOKI/labs/lab1_2part/src/by/bsuir/algorithms/GridMethod.java" afterDir="false" />
+    <list default="true" id="5a1fb871-87a3-48e2-a85e-e0fcfcd6a06e" name="Changes" comment="RIS - lab2 - final version">
+      <change afterPath="$PROJECT_DIR$/../../../KIOKI/labs/lab2-6/.idea/lab2-6.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../KIOKI/labs/lab2-6/lab2/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../KIOKI/labs/lab2-6/lab2/src/main/java/by/bsuir/SDes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../KIOKI/labs/lab2-6/lab2/src/main/resources/decryptedMessage.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../KIOKI/labs/lab2-6/lab2/src/main/resources/encryptedMessage.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../KIOKI/labs/lab2-6/lab2/src/main/resources/sourceMessage.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/Customer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/CustomerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/CustomerServiceBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/CustomerServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/src/main/webapp/WEB-INF/css/customers.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/src/main/webapp/index.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/src/main/webapp/main.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../samples/lab3_Andrei/.idea/lab3_Andrei.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../samples/lab3_Andrei/lab3/lab3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../samples/laba3_YASHA/laba3/laba3_YASHA.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../samples/laba3/laba3/laba3.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +79,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Univer/FKP/6sem/RIS/labs/samples/laba3"
+    "last_opened_file_path": "C:/Univer/FKP/6sem/RIS/labs/lab2"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -180,18 +177,6 @@
         </option>
       </method>
     </configuration>
-    <configuration default="true" type="TomeeConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings />
-      <predefined_log_file enabled="true" id="Tomcat" />
-      <predefined_log_file enabled="true" id="Tomcat Catalina" />
-      <predefined_log_file id="Tomcat Manager" />
-      <predefined_log_file id="Tomcat Host Manager" />
-      <predefined_log_file id="Tomcat Localhost Access" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -202,8 +187,18 @@
       <option name="presentableId" value="Default" />
       <updated>1677679845686</updated>
       <workItem from="1677679847045" duration="3845000" />
-      <workItem from="1677777162196" duration="29930000" />
+      <workItem from="1677777162196" duration="30270000" />
+      <workItem from="1678186230787" duration="61000" />
+      <workItem from="1678814533290" duration="6392000" />
     </task>
+    <task id="LOCAL-00001" summary="RIS - lab2 - final version">
+      <created>1678176941120</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1678176941120</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,6 +214,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="RIS - lab2 - final version" />
+    <option name="LAST_COMMIT_MESSAGE" value="RIS - lab2 - final version" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
