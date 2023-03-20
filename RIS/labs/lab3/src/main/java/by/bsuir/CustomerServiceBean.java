@@ -24,6 +24,7 @@ public class CustomerServiceBean implements CustomerService {
 
     @Override
     public void insert(Customer customer) {
+
             entityManager.persist(customer);
     }
 
@@ -38,9 +39,8 @@ public class CustomerServiceBean implements CustomerService {
     }
 
     @Override
-    public boolean update(Customer updatedDetails) {
+    public void update(Customer updatedDetails) {
         Customer customerToUpdate = entityManager.find(Customer.class, updatedDetails.getId());
-        if(customerToUpdate != null){
             customerToUpdate.setName(updatedDetails.getName());
             customerToUpdate.setSurname(updatedDetails.getSurname());
             customerToUpdate.setCity(updatedDetails.getCity());
@@ -48,8 +48,6 @@ public class CustomerServiceBean implements CustomerService {
             customerToUpdate.setMainAddress(updatedDetails.getMainAddress());
             customerToUpdate.setAdditionalAddress(updatedDetails.getAdditionalAddress());
             entityManager.merge(customerToUpdate);
-            return true;
-        }
-        return false;
+
     }
 }

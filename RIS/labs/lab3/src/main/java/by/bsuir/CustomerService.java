@@ -9,5 +9,5 @@ public interface CustomerService {
     Customer getCustomerById(int id);
     void insert(Customer customer);
     boolean delete(int id);
-    boolean update(Customer customer);
+    void update(Customer customer);
 }

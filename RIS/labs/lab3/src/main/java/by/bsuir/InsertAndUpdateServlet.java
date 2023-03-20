@@ -1,7 +1,8 @@
 package by.bsuir;
 
+import by.bsuir.validation.CustomerValidator;
+import by.bsuir.validation.ValidationResult;
 import jakarta.ejb.EJB;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -18,46 +19,61 @@ public class InsertAndUpdateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String surname = req.getParameter("surname");
-        String city = req.getParameter("city");
-        String mainAddress = req.getParameter("mainAddress");
-        String additionalAddress = req.getParameter("additionalAddress");
-        if (name.equals("") || surname.equals("") || city.equals("") || req.getParameter("creditLimit").equals("") || mainAddress.equals("") || additionalAddress.equals("")) {
-            req.setAttribute("insertErr", "Issue with parameters, try again!");
-        } else {
-            int creditLimit = Integer.parseInt(req.getParameter("creditLimit"));
-            if (creditLimit < 0) {
-                req.setAttribute("insertErr", "Credit limit should be greater than 0");
+        if (!req.getParameter("creditLimit").equals("")) {
+            String name = req.getParameter("name");
+            String surname = req.getParameter("surname");
+            String city = req.getParameter("city");
+            String mainAddress = req.getParameter("mainAddress");
+            String additionalAddress = req.getParameter("additionalAddress");
+            String creditLimit = req.getParameter("creditLimit");
+            Customer customer = new Customer(name, surname, city, Integer.parseInt(creditLimit), mainAddress, additionalAddress);
+            ValidationResult validationResult;
+            CustomerValidator validator = new CustomerValidator();
+            validationResult = validator.validate(customer);
+            List<ValidationResult.ValidationError> errorList = validationResult.getErrors();
+            if (errorList.isEmpty()) {
+                customerService.insert(customer);
             } else {
-                customerService.insert(new Customer(name, surname, city, creditLimit, mainAddress, additionalAddress));
+                for (ValidationResult.ValidationError curErr : errorList) {
+                    req.setAttribute("insert" + curErr.getFieldIdentifier(), curErr.getErrorMessage());
+                }
             }
+
+        } else {
+            req.setAttribute("insertCreditLimitErr", "Credit limit cannot be empty");
         }
         List<Customer> customers = customerService.getAll();
-        req.setAttribute("customers", customers);
+        req.setAttribute("customersToTable", customers);
+        req.setAttribute("customersToDropdown", customerService.getAll());
         getServletContext().getRequestDispatcher("/main.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
-        String surname = req.getParameter("surname");
-        String city = req.getParameter("city");
-        String mainAddress = req.getParameter("mainAddress");
-        String additionalAddress = req.getParameter("additionalAddress");
-        if (name.equals("") || surname.equals("") || city.equals("") || req.getParameter("creditLimit").equals("") || mainAddress.equals("") || additionalAddress.equals("") || req.getParameter("id").equals("")) {
-            req.setAttribute("updateErr", "Issue with parameters, try again!");
-        } else {
-            int id = Integer.parseInt(req.getParameter("id"));
-            int creditLimit = Integer.parseInt(req.getParameter("creditLimit"));
-            if (creditLimit < 0 || id < 0) {
-                req.setAttribute("updateErr", "Credit limit and id should be greater than 0");
+        if (!req.getParameter("creditLimit").equals("")) {
+            String name = req.getParameter("name");
+            String surname = req.getParameter("surname");
+            String city = req.getParameter("city");
+            String mainAddress = req.getParameter("mainAddress");
+            String additionalAddress = req.getParameter("additionalAddress");
+            Customer customer = new Customer(Integer.parseInt(req.getParameter("id")), name, surname, city, Integer.parseInt(req.getParameter("creditLimit")), mainAddress, additionalAddress);
+            CustomerValidator validator = new CustomerValidator();
+            ValidationResult validationResult = validator.validate(customer);
+            List<ValidationResult.ValidationError> errorList = validationResult.getErrors();
+            if (errorList.isEmpty()) {
+                customerService.update(customer);
             } else {
-                customerService.update(new Customer(id, name, surname, city, creditLimit, mainAddress, additionalAddress));
+                for (ValidationResult.ValidationError curErr : errorList) {
+                    req.setAttribute("update" + curErr.getFieldIdentifier(), curErr.getErrorMessage());
+                }
             }
+
+        } else {
+            req.setAttribute("updateCreditLimitErr", "Credit limit cannot be empty");
         }
         List<Customer> customers = customerService.getAll();
-        req.setAttribute("customers", customers);
+        req.setAttribute("customersToTable", customers);
+        req.setAttribute("customersToDropdown", customerService.getAll());
         getServletContext().getRequestDispatcher("/main.jsp").forward(req, resp);
     }
 }

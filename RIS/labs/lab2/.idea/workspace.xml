@@ -10,18 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5a1fb871-87a3-48e2-a85e-e0fcfcd6a06e" name="Changes" comment="RIS - lab2 - final version">
-      <change afterPath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/InsertAndUpdateServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/validation/CustomerValidationResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/validation/CustomerValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/validation/EntityValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/validation/ValidationResult.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../samples/LR3 (2)/.idea/LR3 (2).iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../samples/lab3_Andrei/.idea/lab3_Andrei.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../samples/lab3_Andrei/lab3/lab3.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../samples/laba3_YASHA/laba3/laba3_YASHA.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/CustomerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/CustomerServiceBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/CustomerServiceBean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/CustomerServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/GetByIdAndDeleteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../lab3/src/main/webapp/WEB-INF/css/customers.css" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/src/main/webapp/WEB-INF/css/customers.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/GetByIdAndDeleteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/GetByIdAndDeleteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/InsertAndUpdateServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/src/main/java/by/bsuir/InsertAndUpdateServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../lab3/src/main/webapp/main.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../lab3/src/main/webapp/main.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -174,7 +174,10 @@
       <workItem from="1677777162196" duration="30270000" />
       <workItem from="1678186230787" duration="61000" />
       <workItem from="1678814533290" duration="7449000" />
-      <workItem from="1678983969237" duration="2964000" />
+      <workItem from="1678983969237" duration="3277000" />
+      <workItem from="1679050313568" duration="694000" />
+      <workItem from="1679072223495" duration="607000" />
+      <workItem from="1679307585502" duration="608000" />
     </task>
     <task id="LOCAL-00001" summary="RIS - lab2 - final version">
       <created>1678176941120</created>
