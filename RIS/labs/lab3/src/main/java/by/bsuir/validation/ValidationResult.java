@@ -10,7 +10,9 @@ public class ValidationResult {
     public List<ValidationError> getErrors() {
         return errors;
     }
-
+    public boolean hasErrors(){
+        return !errors.isEmpty();
+    }
     public void setErrors(List<ValidationError> errors) {
         this.errors = errors;
     }

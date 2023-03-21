@@ -19,7 +19,7 @@ public class InsertAndUpdateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (!req.getParameter("creditLimit").equals("")) {
+        if (!req.getParameter("creditLimit").isBlank()) {
             String name = req.getParameter("name");
             String surname = req.getParameter("surname");
             String city = req.getParameter("city");
@@ -27,14 +27,13 @@ public class InsertAndUpdateServlet extends HttpServlet {
             String additionalAddress = req.getParameter("additionalAddress");
             String creditLimit = req.getParameter("creditLimit");
             Customer customer = new Customer(name, surname, city, Integer.parseInt(creditLimit), mainAddress, additionalAddress);
-            ValidationResult validationResult;
             CustomerValidator validator = new CustomerValidator();
-            validationResult = validator.validate(customer);
-            List<ValidationResult.ValidationError> errorList = validationResult.getErrors();
-            if (errorList.isEmpty()) {
+            ValidationResult validationResult = validator.validate(customer);
+            if (!validationResult.hasErrors()) {
                 customerService.insert(customer);
             } else {
-                for (ValidationResult.ValidationError curErr : errorList) {
+                List<ValidationResult.ValidationError> validationResults = validationResult.getErrors();
+                for (ValidationResult.ValidationError curErr : validationResults) {
                     req.setAttribute("insert" + curErr.getFieldIdentifier(), curErr.getErrorMessage());
                 }
             }
@@ -50,7 +49,7 @@ public class InsertAndUpdateServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        if (!req.getParameter("creditLimit").equals("")) {
+        if (!req.getParameter("creditLimit").isBlank()) {
             String name = req.getParameter("name");
             String surname = req.getParameter("surname");
             String city = req.getParameter("city");

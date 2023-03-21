@@ -24,7 +24,6 @@ public class CustomerServiceBean implements CustomerService {
 
     @Override
     public void insert(Customer customer) {
-
             entityManager.persist(customer);
     }
 
