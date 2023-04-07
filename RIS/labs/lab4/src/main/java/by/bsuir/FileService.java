@@ -24,8 +24,6 @@ public class FileService {
 
     public void writeToFile(String message, boolean appendFlag) throws IOException {
         Path path = Paths.get(fileName);
-        System.out.println("Path: " + path.toAbsolutePath());
-        System.out.println(message);
         PrintWriter printWriter = new PrintWriter(new FileWriter(path.toFile(), appendFlag));
         printWriter.write(message + "\n");
         printWriter.close();

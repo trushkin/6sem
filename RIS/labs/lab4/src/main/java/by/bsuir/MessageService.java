@@ -7,8 +7,8 @@ import java.util.List;
 
 @Local
 public interface MessageService {
-    public void addString(String message) throws JMSException;
-    public void removeString(String message) throws JMSException;
+    void addString(String message) throws JMSException;
+    void removeString(String message) throws JMSException;
 
-    public List<String> getAllMessages();
+    List<String> getAllMessages();
 }

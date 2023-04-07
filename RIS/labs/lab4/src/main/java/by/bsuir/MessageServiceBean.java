@@ -30,6 +30,7 @@ public class MessageServiceBean implements MessageService{
         Session session = connection.createSession();
         Message message = session.createTextMessage(text);
         MessageProducer messageProducer = session.createProducer(destination);
+       // message.setJMSCorrelationID();
         messageProducer.send(message);
         session.close();
         connection.close();

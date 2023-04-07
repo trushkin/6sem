@@ -1,19 +1,24 @@
 package by.bsuir;
 
-import jakarta.ejb.*;
-import jakarta.persistence.*;
+import jakarta.ejb.Stateless;
+import jakarta.ejb.TransactionAttribute;
+import jakarta.ejb.TransactionAttributeType;
+import jakarta.ejb.TransactionManagement;
+import jakarta.ejb.TransactionManagementType;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 import java.util.List;
 
 
 @Stateless
-@TransactionManagement(TransactionManagementType.CONTAINER)
+//@TransactionManagement(TransactionManagementType.CONTAINER)
 public class CustomerServiceBean implements CustomerService {
 
     @PersistenceContext(unitName = "CustomerManagement")
     private EntityManager entityManager;
 
-    @TransactionAttribute(TransactionAttributeType.REQUIRED)
+  //  @TransactionAttribute(TransactionAttributeType.REQUIRED)
     @Override
     public List<Customer> getAll() {
         return entityManager.createQuery("select c from Customer c", Customer.class).getResultList();

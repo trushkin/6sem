@@ -18,7 +18,6 @@ import java.io.IOException;
                 propertyValue = "jakarta.jms.Queue")
 })
 public class AddMessageQueueListener implements MessageListener {
-
     @Override
     public void onMessage(Message message) {
         try {
