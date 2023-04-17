@@ -10,6 +10,8 @@ import jakarta.jms.Message;
 import jakarta.jms.MessageProducer;
 import jakarta.jms.Queue;
 import jakarta.jms.Session;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
@@ -23,6 +25,8 @@ public class MessageServiceBean implements MessageService{
 
     @Resource(name = "queueToDelete")
     Queue queueToDelete;
+    private static Logger logger = LogManager.getLogger(MessageServiceBean.class);
+    private Integer messageId = 0;
 
     private void sendMessage(String text, Destination destination) throws JMSException {
         Connection connection = connectionFactory.createConnection();
@@ -30,7 +34,8 @@ public class MessageServiceBean implements MessageService{
         Session session = connection.createSession();
         Message message = session.createTextMessage(text);
         MessageProducer messageProducer = session.createProducer(destination);
-       // message.setJMSCorrelationID();
+        message.setJMSCorrelationID("ID: " + (++messageId));
+        logger.info("Send message with " + message.getJMSCorrelationID());
         messageProducer.send(message);
         session.close();
         connection.close();

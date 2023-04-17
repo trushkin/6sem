@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+    <title>Edit customer</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h3>Enter ID:</h3>
+        <h:inputText id="ID" value="#{customerManageBean.id}">
+            <f:validator validatorId="idValidator"/>
+        </h:inputText>
+        <h:commandButton action="#{customerManageBean.getCustomerById()}" value="Find"/>
+        <h:message for="ID" errorStyle="color: red"/>
+        <c:if test="#{customerManageBean.id != null}">
+            <c:if test="#{customerManageBean.customer == null}">
+                <br/><br/>
+                <h:outputText value="There is no customer with this ID!" style="color: red"/>
+            </c:if>
+        </c:if>
+        <h3>NAME: </h3>
+        <h:inputText id="name" value="#{customerManageBean.name}">
+            <c:if test="#{customerManageBean.customer != null}">
+                <f:validator validatorId="emptyFieldValidator"/>
+                <f:validator validatorId="nameValidator"/>
+            </c:if>
+        </h:inputText>
+        <h:message for="name" errorStyle="color: red"/>
+        <h3>SURNAME: </h3>
+        <h:inputText id="surname" value="#{customerManageBean.surname}">
+            <c:if test="#{customerManageBean.customer != null}">
+                <f:validator validatorId="emptyFieldValidator"/>
+                <f:validator validatorId="surnameValidator"/>
+            </c:if>
+        </h:inputText>
+        <h:message for="surname" errorStyle="color: red"/>
+        <h3>E-MAIL: </h3>
+        <h:inputText id="email" value="#{customerManageBean.email}">
+            <c:if test="#{customerManageBean.customer != null}">
+                <f:validator validatorId="emptyFieldValidator"/>
+                <f:validator validatorId="emailValidator"/>
+            </c:if>
+        </h:inputText>
+        <h:message for="email" errorStyle="color: red"/>
+        <h3>ZIP CODE: </h3>
+        <h:inputText id="zipcode" value="#{customerManageBean.zipcode}">
+            <c:if test="#{customerManageBean.customer != null}">
+                <f:validator validatorId="emptyFieldValidator"/>
+                <f:validator validatorId="zipcodeValidator"/>
+            </c:if>
+        </h:inputText>
+        <h:message for="zipcode" errorStyle="color: red"/>
+        <br/><br/>
+        <h:commandButton action="#{customerManageBean.editCustomer()}" value="Edit"/>
+    </h:form>
+    <br/><br/>
+    <h:button outcome="index.html" value="Back"/>
+</h:body>
+</html>

@@ -6,7 +6,7 @@
     <persistence-unit name="CustomerManagement">
         <jta-data-source>CustomerManagement</jta-data-source>
         <non-jta-data-source>CustomerManagement</non-jta-data-source>
-        <class>by.bsuir.Customer</class>
+        <class>by.bsuir.entity.Customer</class>
         <properties>
             <!--            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>-->
             <!--            <property name="jakarta.persistence.jdbc.user" value="vlad"/>-->

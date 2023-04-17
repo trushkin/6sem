@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<h:head>
+    <title>Find by id</title>
+</h:head>
+<h:body>
+    <h:form>
+        <h3>Enter ID:</h3>
+        <h:inputText id="ID" value="#{customerManageBean.id}">
+            <f:validator validatorId="idValidator"/>
+        </h:inputText>
+        <h:commandButton action="#{customerManageBean.getCustomerById()}" value="Find"/>
+        <h:message for="ID" errorStyle="color: red"/>
+        <c:if test="#{customerManageBean.customer != null}">
+            <br/><br/>
+            <h:outputText value="ID: "/>
+            <h:outputText value="#{customerManageBean.id}"/>
+            <br/>
+            <h:outputText value="NAME: "/>
+            <h:outputText value="#{customerManageBean.name}"/>
+            <br/>
+            <h:outputText value="SURNAME: "/>
+            <h:outputText value="#{customerManageBean.surname}"/>
+            <br/>
+            <h:outputText value="E-MAIL: "/>
+            <h:outputText value="#{customerManageBean.email}"/>
+            <br/>
+            <h:outputText value="ZIP CODE: "/>
+            <h:outputText value="#{customerManageBean.zipcode}"/>
+        </c:if>
+        <c:if test="#{customerManageBean.id != null}">
+            <c:if test="#{customerManageBean.customer == null}">
+                <br/><br/>
+                <h:outputText value="There is no customer with this ID!" style="color: red"/>
+            </c:if>
+        </c:if>
+        <br/><br/>
+        <h:button outcome="index.html" value="Back"/>
+    </h:form>
+</h:body>
+</html>
