@@ -1,6 +1,6 @@
 package by.bsuir.proddep.dto.response;
 
-import by.bsuir.proddep.entity.Employee;
+import by.bsuir.proddep.dto.EmployeeDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AuthenticationResponse {
-    private EmployeeResponse employee;
+    private EmployeeDto employee;
     private String token;
 }

@@ -1,6 +1,6 @@
 package by.bsuir.proddep.dto.mapper;
 
-import by.bsuir.proddep.dto.response.EmployeeResponse;
+import by.bsuir.proddep.dto.EmployeeDto;
 import by.bsuir.proddep.entity.Employee;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 @Component
 @NoArgsConstructor
 public class EmployeeMapper {
-    public EmployeeResponse toResponseDto(Employee employee){
-        return EmployeeResponse.builder()
+    public EmployeeDto toEmployeeDto(Employee employee){
+        return EmployeeDto.builder()
                 .id(employee.getId())
                 .firstName(employee.getFirstName())
                 .middleName(employee.getMiddleName())
@@ -17,5 +17,14 @@ public class EmployeeMapper {
                 .email(employee.getEmail())
                 .role(employee.getRole())
                 .active(employee.isActive()).build();
+    }
+    public Employee toEmployeeEntity(EmployeeDto employeeDto){
+        return Employee.builder()
+                .firstName(employeeDto.getFirstName())
+                .middleName(employeeDto.getMiddleName())
+                .lastName(employeeDto.getLastName())
+                .email(employeeDto.getEmail())
+                .role(employeeDto.getRole())
+                .isActive(employeeDto.isActive()).build();
     }
 }

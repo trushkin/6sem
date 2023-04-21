@@ -1,4 +1,4 @@
-package by.bsuir.proddep.dto.response;
+package by.bsuir.proddep.dto;
 
 import by.bsuir.proddep.entity.enums.Role;
 import lombok.AllArgsConstructor;
@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmployeeResponse {
+public class EmployeeDto {
     Integer id;
     String email;
     String firstName;
@@ -20,5 +20,6 @@ public class EmployeeResponse {
     String lastName;
     Role role;
     boolean active;
+
 }
 

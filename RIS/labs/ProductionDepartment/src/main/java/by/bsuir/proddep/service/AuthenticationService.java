@@ -2,7 +2,7 @@ package by.bsuir.proddep.service;
 
 import by.bsuir.proddep.dto.request.AuthenticationRequest;
 import by.bsuir.proddep.dto.response.AuthenticationResponse;
-import by.bsuir.proddep.dto.response.EmployeeResponse;
+import by.bsuir.proddep.dto.EmployeeDto;
 import by.bsuir.proddep.entity.Employee;
 import by.bsuir.proddep.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
@@ -48,7 +48,7 @@ public class AuthenticationService {
         System.out.println(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
-                .employee(EmployeeResponse.builder()
+                .employee(EmployeeDto.builder()
                         .firstName(user.getFirstName())
                         .middleName(user.getMiddleName())
                         .lastName(user.getLastName())

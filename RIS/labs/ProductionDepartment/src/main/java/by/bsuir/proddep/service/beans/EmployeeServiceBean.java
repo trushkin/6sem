@@ -1,7 +1,7 @@
 package by.bsuir.proddep.service.beans;
 
 import by.bsuir.proddep.dto.mapper.EmployeeMapper;
-import by.bsuir.proddep.dto.response.EmployeeResponse;
+import by.bsuir.proddep.dto.EmployeeDto;
 import by.bsuir.proddep.entity.enums.Role;
 import by.bsuir.proddep.repository.EmployeeRepository;
 import by.bsuir.proddep.entity.Employee;
@@ -14,7 +14,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,24 +27,24 @@ public class EmployeeServiceBean implements EmployeeService {
     private ItemRepository itemRepository;
 
     @Override
-    public List<EmployeeResponse> getAllEmployees() {
-         return employeeRepository.findByRoleNot(Role.ADMIN).stream().map(employeeMapper::toResponseDto).toList();
-        //return employeeRepository.findAll().stream().map(employeeMapper::toResponseDto).toList();
+    public List<EmployeeDto> getAllEmployees() {
+        return employeeRepository.findByRoleNot(Role.ADMIN).stream().map(employeeMapper::toEmployeeDto).toList();
     }
 
     @Override
-    public Employee getUserById() {
+    public EmployeeDto getEmployee() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
         System.out.println(email);
-        return employeeRepository
+        return employeeMapper.toEmployeeDto(employeeRepository
                 .findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("User not found")));
     }
 
     @Override
-    public void addEmployee(Employee employee) {
-        employeeRepository.save(employee);
+    public EmployeeDto addEmployee(EmployeeDto employeeDto) {
+        Employee employee = employeeRepository.save(employeeMapper.toEmployeeEntity(employeeDto));
+        return employeeMapper.toEmployeeDto(employee);
     }
 
     @Override
@@ -58,11 +57,9 @@ public class EmployeeServiceBean implements EmployeeService {
     }
 
     @Override
-    public void update(Employee updatedEmployeeDetails) {
-        Optional<Employee> employeeToUpdate = employeeRepository.findById(updatedEmployeeDetails.getId());
-        employeeToUpdate.ifPresent(employee -> {
-            employeeRepository.save(employee);
-        });
+    public EmployeeDto updateEmployee(EmployeeDto employeeDto) {
+        Employee updatedEmployee = employeeRepository.save(employeeMapper.toEmployeeEntity(employeeDto));
+        return employeeMapper.toEmployeeDto(updatedEmployee);
     }
 
 }
