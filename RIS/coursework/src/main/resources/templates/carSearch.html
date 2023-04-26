@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+</head>
+<head th:insert="~{includes/header::head}"></head>
+<body>
+<nav
+        th:insert="~{includes/menu::menu}">
+</nav>
+<div th:insert="~{includes/datepicker::datepicker}">
+</div>
+
+<p th:text="${dateFrom} + ' - ' + ${dateTo}"
+   class="btn btn-light text-start shadow d-block w-100"></p>
+
+<!--<div th:switch="${cars}">-->
+<!--    <h2 th:case="null">Нет свободных машин</h2>-->
+<!--    <div th:case="*">-->
+<!--        <h2>Свободные автомобили</h2>-->
+<!--        <table>-->
+<!--            <tbody>-->
+
+<!--            <tr th:each="car : ${cars}">-->
+<!--                <td><img th:src="@{${'/img/' + car.brand + '_' + car.model + '.jpg'}}"/></td>-->
+<!--                <td th:text="${car.brand} + ' ' + ${car.model}"></td>-->
+<!--                <td><a th:href="@{/book/{id}(id=${car.id})}">Забронировать</a></td>-->
+<!--            </tr>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--</div>-->
+<div class="row">
+    <div class="col-md-4 order-md-1">
+        <div class="container">
+            <h4 class="col-md-8 mb-3">Фильтры</h4>
+            <div class="col-md-8 mb-3">
+                <label>Тип двигателя</label>
+                <select class="custom-select d-block w-100" id="brand">
+                    <option value="">Выберите...</option>
+                    <option th:each="engine : ${T(by.bsuir.coursework.car.EngineType).values()}"
+                            th:value="${engine}"
+                            th:text="#{${'engine.' + engine}}">engine
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-8 mb-3">
+                <label>Тип кузова</label>
+                <select class="custom-select d-block w-100" id="vehicle_type">
+                    <option value="">Выберите...</option>
+                    <option th:each="vehicleType : ${T(by.bsuir.coursework.car.VehicleType).values()}"
+                            th:value="${vehicleType}"
+                            th:text="${vehicleType}">vehicleType
+                    </option>
+                </select>
+            </div>
+            <div class="col-md-8 mb-3">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Поиск</button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 order-md-2">
+        <div th:switch="${cars}">
+            <h2 th:case="null">Нет свободных машин</h2>
+            <div th:case="*">
+                <th:block th:each="car : ${cars}">
+                    <!--                <div class="row mb-2">-->
+                    <div class="col-md-10 order-md-2">
+                        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                            <div class="card-body d-flex flex-column align-items-start">
+                                <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                <h3 class="mb-0">
+                                    <a class="text-dark">Featured post</a>
+                                </h3>
+                                <div class="mb-1 text-muted">Nov 12</div>
+                                <p class="card-text mb-auto">This is a wider card with supporting text below as a
+                                    natural
+                                    lead-in to
+                                    additional content.</p>
+                                <a th:href="@{/book/{id}(id=${car.id})}">Забронировать</a>
+                            </div>
+                            <img class="card-img-right flex-auto d-none d-md-block"
+                                 th:src="@{${'/img/vw_golf.jpg'}}"
+                                 alt="Card image cap">
+                        </div>
+                    </div>
+                    <!--                </div>-->
+                </th:block>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:insert="~{includes/footer :: footer}" class="bg-white"></footer>
+</body>
+</html>

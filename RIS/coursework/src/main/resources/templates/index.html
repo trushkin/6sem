@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<head th:insert="~{includes/header::head}"></head>
+<body>
+<nav
+        th:insert="~{includes/menu::menu}">
+</nav>
+
+<div th:insert="~{includes/datepicker::datepicker}">
+</div>
+
+<section class="py-5">
+    <div class="py-5">
+        <footer th:insert="~{includes/footer :: footer}" class="bg-white"></footer>
+    </div>
+</section>
+</body>
+</html>

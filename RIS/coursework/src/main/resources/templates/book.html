@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<head th:insert="~{includes/header::head}"></head>
+<body>
+<p th:text="'Бронируем машину №' + ${car.id}"
+   class="btn btn-light text-start shadow d-block w-100"></p>
+<form class="p-3 p-xl-4 text-center" method="post" action="/confirmBooking">
+    <div class="mb-3">
+        <button class="btn btn-primary shadow d-block w-100" th:value="${car.id}" name="id" type="submit">Подтвердить бронирование</button>
+    </div>
+</form>
+<footer th:insert="~{includes/footer :: footer}" class="bg-white"></footer>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<head th:insert="~{includes/header::head}"></head>
+<body>
+
+<p th:text="'Забронирована машина №' + ${car.id}"
+   class="btn btn-light text-start shadow d-block w-100"></p>
+<div>
+  <a class="nav-link" href="/">Вернуться на главную страницу</a>
+</div>
+<footer th:insert="~{includes/footer :: footer}" class="bg-white"></footer>
+</body>
+</html>

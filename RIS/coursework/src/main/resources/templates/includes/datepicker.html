@@ -1,0 +1,24 @@
+<section th:fragment="datepicker" class="py-5">
+    <div class="container py-5">
+        <form method="post" action="/searchForAvailableCars">
+            <div class="row d-flex justify-content-center">
+                <div class=" col-md-4 col-xl-4">
+                    <input class="form-control" type="date" name="dateFrom"
+
+                           th:value="${dateFrom} ?: ${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+                           th:min="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}"
+                           placeholder="Дата начала аренды" required>
+                </div>
+                <div class="col-md-4 col-xl-4">
+                    <input class="form-control" type="date" name="dateTo"
+                           th:value="${dateTo} ?: ${#dates.format(#dates.create(2023, #dates.createNow().getMonth() + 1, #dates.createNow().getDate() + 1), 'yyyy-MM-dd')}"
+                           th:min="${#dates.format(#dates.create(2023, #dates.createNow().getMonth() + 1, #dates.createNow().getDate() + 1), 'yyyy-MM-dd')}"
+                           placeholder="Дата завершения аренды" required>
+                </div>
+                <div class="col-md-4 col-xl-2">
+                    <button class="btn btn-outline-primary shadow d-block w-100" type="submit">Найти машину</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
