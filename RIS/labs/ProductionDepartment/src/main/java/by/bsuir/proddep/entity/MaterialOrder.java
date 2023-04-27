@@ -1,5 +1,7 @@
 package by.bsuir.proddep.entity;
 
+import by.bsuir.proddep.employee.Employee;
+import by.bsuir.proddep.item.Item;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

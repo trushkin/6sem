@@ -1,6 +1,6 @@
 package by.bsuir.proddep.config;
 
-import by.bsuir.proddep.repository.EmployeeRepository;
+import by.bsuir.proddep.employee.EmployeeRepository;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,6 +1,6 @@
-package by.bsuir.proddep.entity;
+package by.bsuir.proddep.specification;
 
-import by.bsuir.proddep.entity.enums.ProductionOrderStatus;
+import by.bsuir.proddep.entity.SpecItem;
 import by.bsuir.proddep.item.Item;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -16,26 +16,28 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
-@Table(name = "production_order")
+@Table(name = "specification")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductionOrder {
+public class Specification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "name")
     private String name;
-    @Column(name="po_quantity")
-    private Integer quantity;
-    @Column(name = "status")
-    private ProductionOrderStatus status;
-    @OneToMany(mappedBy = "productionOrder", cascade = CascadeType.ALL)
-    private Set<MaterialOrder> materialOrders;
+    @Column(name = "start_date")
+    private LocalDate start_date;
+    @Column(name = "end_date")
+    private LocalDate end_date;
     @OneToOne(cascade = CascadeType.ALL)
     private Item item;
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<SpecItem> specItems;
+
 }

@@ -1,6 +1,5 @@
-package by.bsuir.proddep.entity;
+package by.bsuir.proddep.operation;
 
-import by.bsuir.proddep.item.Item;
 import by.bsuir.proddep.specification.Specification;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -12,26 +11,30 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "specItem")
+@Table(name = "specOperation")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SpecItem {
+@Builder
+public class Operation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "sc_quantity")
-    private Integer sc_quantity;
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "item_id")
-    private Item item;
+    @Column(name = "queue")
+    private String queue;
+    @Column(name = "time")
+    private Integer time;
+    @Column(name = "name")
+    private String name;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "specification_id")
     private Specification specification;
+
 }
