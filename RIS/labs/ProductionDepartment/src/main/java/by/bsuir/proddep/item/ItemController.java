@@ -21,7 +21,7 @@ public class ItemController {
     @Autowired
     ItemService itemService;
 
-    @GetMapping
+    @GetMapping("/asdf")
     public ResponseEntity<List<ItemDto>> getAllMaterials() {
         return ResponseEntity.ok(itemService.getAllMaterials());
     }

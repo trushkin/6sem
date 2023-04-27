@@ -1,6 +1,7 @@
 package by.bsuir.proddep.operation;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,11 +10,14 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class OperationService {
- private final OperationRepository operationRepository;
- private final OperationMapper operationMapper;
+    @Autowired
+    private OperationRepository operationRepository;
+    private final OperationMapper operationMapper;
+
     public List<OperationDto> getAllOperation() {
         return operationRepository.findAll().stream().map(operationMapper::toOperationDto).toList();
     }
+
     public OperationDto addOperation(OperationDto operationDto) {
         Operation operation = operationRepository.save(operationMapper.toOperationEntity(operationDto));
         return operationMapper.toOperationDto(operation);
@@ -25,7 +29,8 @@ public class OperationService {
         Operation updatedOperation = operationRepository.save(entityOperation);
         return operationMapper.toOperationDto(updatedOperation);
     }
-    public OperationDto getOperationById(Integer operationId){
+
+    public OperationDto getOperationById(Integer operationId) {
         Optional<Operation> operation = operationRepository.findById(operationId);
         return operationMapper.toOperationDto(operation.get());
     }

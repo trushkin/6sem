@@ -1,8 +1,8 @@
 package by.bsuir.proddep.item;
 
-import by.bsuir.proddep.entity.MaterialOrder;
-import by.bsuir.proddep.entity.ProductionOrder;
-import by.bsuir.proddep.entity.SpecItem;
+import by.bsuir.proddep.materialOrder.MaterialOrder;
+import by.bsuir.proddep.productionOrder.ProductionOrder;
+import by.bsuir.proddep.specification.SpecItem;
 import by.bsuir.proddep.specification.Specification;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

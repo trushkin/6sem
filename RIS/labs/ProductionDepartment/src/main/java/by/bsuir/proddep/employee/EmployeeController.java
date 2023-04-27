@@ -37,7 +37,7 @@ public class EmployeeController {
     }
     @PutMapping("/changePassword")
     public ResponseEntity<Boolean> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest){
-        return ResponseEntity.ok(employeeService.changePassword(changePasswordRequest));
+        return ResponseEntity.ok().body(employeeService.changePassword(changePasswordRequest));
     }
 
 }

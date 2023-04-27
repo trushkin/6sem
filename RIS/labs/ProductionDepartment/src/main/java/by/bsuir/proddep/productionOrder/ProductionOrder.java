@@ -1,6 +1,6 @@
-package by.bsuir.proddep.entity;
+package by.bsuir.proddep.productionOrder;
 
-import by.bsuir.proddep.entity.enums.ProductionOrderStatus;
+import by.bsuir.proddep.materialOrder.MaterialOrder;
 import by.bsuir.proddep.item.Item;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -12,6 +12,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,6 +25,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class ProductionOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,7 +35,7 @@ public class ProductionOrder {
     @Column(name="po_quantity")
     private Integer quantity;
     @Column(name = "status")
-    private ProductionOrderStatus status;
+    private String status;
     @OneToMany(mappedBy = "productionOrder", cascade = CascadeType.ALL)
     private Set<MaterialOrder> materialOrders;
     @OneToOne(cascade = CascadeType.ALL)

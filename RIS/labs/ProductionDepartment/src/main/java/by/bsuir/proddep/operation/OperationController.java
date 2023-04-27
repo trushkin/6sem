@@ -22,20 +22,23 @@ public class OperationController {
     @Autowired
     OperationService operationService;
 
-    @GetMapping
+    @GetMapping("/asd")
     public ResponseEntity<List<OperationDto>> getAllOperations() {
         return ResponseEntity.ok(operationService.getAllOperation());
     }
+
     @GetMapping
-    public ResponseEntity<OperationDto> getOperation(@RequestParam Integer operationId){
+    public ResponseEntity<OperationDto> getOperation(@RequestParam Integer operationId) {
         return ResponseEntity.ok(operationService.getOperationById(operationId));
     }
+
     @PostMapping
-    public ResponseEntity<OperationDto> addOperation(@RequestBody OperationDto operationDto){
+    public ResponseEntity<OperationDto> addOperation(@RequestBody OperationDto operationDto) {
         return ResponseEntity.ok(operationService.addOperation(operationDto));
     }
+
     @PutMapping
-    public ResponseEntity<OperationDto> updateOperation(@RequestBody OperationDto operationDto){
+    public ResponseEntity<OperationDto> updateOperation(@RequestBody OperationDto operationDto) {
         return ResponseEntity.ok(operationService.updateOperation(operationDto));
     }
 

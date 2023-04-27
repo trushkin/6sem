@@ -1,15 +1,15 @@
-package by.bsuir.proddep.dto;
+package by.bsuir.proddep.productionOrder;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Builder
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class SpecificationDto {
+public class ProductionOrderRequestToUpdate {
+    private Integer id;
+    private String status;
 }

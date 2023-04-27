@@ -1,0 +1,15 @@
+package by.bsuir.proddep.specification;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class SpecificationRequestToUpdate {
+    private Integer id;
+    private boolean active;
+}

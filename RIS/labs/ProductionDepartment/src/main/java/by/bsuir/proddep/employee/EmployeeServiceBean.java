@@ -1,7 +1,9 @@
 package by.bsuir.proddep.employee;
 
+import by.bsuir.proddep.exception.BusinessException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,14 +24,13 @@ public class EmployeeServiceBean implements EmployeeService {
 
     @Override
     public List<EmployeeDto> getAllEmployees() {
-        return employeeRepository.findByRoleNot(Role.ADMIN).stream().map(employeeMapper::toEmployeeDto).toList();
+        return employeeRepository.findByRoleNotOrderByIdAsc(Role.ADMIN).stream().map(employeeMapper::toEmployeeDto).toList();
     }
 
     @Override
     public EmployeeDto getEmployee() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
-        System.out.println(email);
         return employeeMapper.toEmployeeDto(employeeRepository
                 .findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found")));
@@ -37,19 +38,21 @@ public class EmployeeServiceBean implements EmployeeService {
 
     @Override
     public boolean changePassword(ChangePasswordRequest changePasswordRequest) {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
-        String oldPassword = passwordEncoder.encode(changePasswordRequest.getOldPassword());
-        String newPassword = passwordEncoder.encode(changePasswordRequest.getNewPassword());
-        AtomicBoolean flag = new AtomicBoolean(false);
-        Optional<Employee> employeeToChangePassword = employeeRepository.findByEmail(email);
-        employeeToChangePassword.ifPresent(employee -> {
-            if (employee.getPassword().equals(oldPassword)) {
-                employee.setPassword(newPassword);
-                flag.set(true);
-            }
-        });
-        return flag.get();
+        EmployeeDto employee = this.getEmployee();
+
+        String oldPassword = changePasswordRequest.getOldPassword();
+        String newPassword = changePasswordRequest.getNewPassword();
+
+        if (passwordEncoder.matches(newPassword, employee.getPassword()) || newPassword.equals(oldPassword)) {
+            throw new BusinessException("Новый и старый пароли не должны совпадать!", HttpStatus.CONFLICT);
+        }
+        if (!passwordEncoder.matches(oldPassword, employee.getPassword())) {
+            throw new BusinessException("Старый пароль введен неверно", HttpStatus.BAD_REQUEST);
+        }
+
+        employee.setPassword(passwordEncoder.encode(newPassword));
+        employeeRepository.save(employeeMapper.toEmployeeEntity(employee));
+        return true;
     }
 
 
