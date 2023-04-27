@@ -2,11 +2,8 @@ package by.bsuir.proddep.controllers;
 
 import by.bsuir.proddep.dto.request.AuthenticationRequest;
 import by.bsuir.proddep.dto.response.AuthenticationResponse;
-import by.bsuir.proddep.entity.Employee;
-import by.bsuir.proddep.entity.enums.Role;
 import by.bsuir.proddep.service.AuthenticationService;
-import by.bsuir.proddep.service.EmployeeService;
-import lombok.AllArgsConstructor;
+import by.bsuir.proddep.service.beans.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

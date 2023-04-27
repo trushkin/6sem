@@ -20,7 +20,9 @@ public class EmployeeMapper {
     }
     public Employee toEmployeeEntity(EmployeeDto employeeDto){
         return Employee.builder()
+                .id(employeeDto.getId())
                 .firstName(employeeDto.getFirstName())
+                .password(employeeDto.getPassword())
                 .middleName(employeeDto.getMiddleName())
                 .lastName(employeeDto.getLastName())
                 .email(employeeDto.getEmail())

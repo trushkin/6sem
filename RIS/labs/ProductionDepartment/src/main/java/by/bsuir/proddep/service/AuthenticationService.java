@@ -40,12 +40,9 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
-        System.out.println(authenticate.getPrincipal());
-        System.out.println("////////////////");
         Employee user = repository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("User with email %s not found", request.getEmail())));
         String jwtToken = jwtService.generateToken(user);
-        System.out.println(user);
         return AuthenticationResponse.builder()
                 .token(jwtToken)
                 .employee(EmployeeDto.builder()

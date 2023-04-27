@@ -1,18 +1,11 @@
 package by.bsuir.proddep.controllers;
 
-import by.bsuir.proddep.entity.Employee;
-import by.bsuir.proddep.entity.Item;
-import by.bsuir.proddep.entity.enums.ItemType;
-import by.bsuir.proddep.entity.enums.Role;
 import by.bsuir.proddep.repository.ItemRepository;
-import by.bsuir.proddep.service.EmployeeService;
+import by.bsuir.proddep.service.beans.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 @RestController
 @RequestMapping({"", "/", "index", "index.html"})

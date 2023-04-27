@@ -39,5 +39,4 @@ public class Specification {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<SpecItem> specItems;
 
-
 }

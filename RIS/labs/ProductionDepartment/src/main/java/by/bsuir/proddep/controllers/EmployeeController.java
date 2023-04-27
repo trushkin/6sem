@@ -1,7 +1,8 @@
 package by.bsuir.proddep.controllers;
 
 import by.bsuir.proddep.dto.EmployeeDto;
-import by.bsuir.proddep.service.EmployeeService;
+import by.bsuir.proddep.dto.request.ChangePasswordRequest;
+import by.bsuir.proddep.service.beans.EmployeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,6 +37,10 @@ public class EmployeeController {
     @GetMapping("/user")
     public ResponseEntity<EmployeeDto> getUserInfo(){
         return ResponseEntity.ok(employeeService.getEmployee());
+    }
+    @PutMapping("/changePassword")
+    public ResponseEntity<Boolean> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest){
+        return ResponseEntity.ok(employeeService.changePassword(changePasswordRequest));
     }
 
 }
