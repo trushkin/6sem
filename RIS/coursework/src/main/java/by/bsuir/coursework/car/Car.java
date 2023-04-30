@@ -2,6 +2,11 @@
 package by.bsuir.coursework.car;
 
 import by.bsuir.coursework.booking.Booking;
+import by.bsuir.coursework.car.details.Engine;
+import by.bsuir.coursework.car.details.Model;
+import by.bsuir.coursework.car.details.Transmission;
+import by.bsuir.coursework.car.details.Trunk;
+import by.bsuir.coursework.car.details.Vehicle;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,12 +15,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "cars")
@@ -45,8 +52,8 @@ public class Car {
     private String vin;
     @Column(name="plate_num")
     private Integer plateNum;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "car", optional = true)
-    private Booking booking;
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)
+    private List<Booking> bookings;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "model_id")
     private Model model;

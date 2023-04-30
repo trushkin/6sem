@@ -1,6 +1,5 @@
 package by.bsuir.coursework.user;
 
-import by.bsuir.coursework.car.Client;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,8 +29,6 @@ public class User  implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "login")
-    private String login;
     @Column(name = "password")
     private String password;
     @Column(name = "name")

@@ -1,5 +1,6 @@
 package by.bsuir.proddep.item;
 
+import by.bsuir.proddep.specification.SpecificationMapper;
 import by.bsuir.proddep.specification.SpecificationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 @AllArgsConstructor
 public class ItemMapper {
+    private final SpecificationMapper specificationMapper;
     @Autowired
     private final SpecificationRepository specificationRepository;
     public ItemDto toItemDto(Item item){
@@ -23,7 +25,7 @@ public class ItemMapper {
                 .id(itemDto.getId())
                 .name(itemDto.getName())
                 .type(itemDto.getType())
-                .specification(specificationRepository.findById(itemDto.getSpecificationId()).get())
+                .specification(specificationRepository.findById(itemDto.getSpecificationId()).orElse(null))
                 .build();
     }
 }

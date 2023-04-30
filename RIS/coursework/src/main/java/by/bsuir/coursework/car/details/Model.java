@@ -1,13 +1,14 @@
-package by.bsuir.coursework.car;
+package by.bsuir.coursework.car.details;
 
+import by.bsuir.coursework.car.Car;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -15,21 +16,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
-@Table(name = "trunks")
+@Table(name = "models")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Trunk {
+public class Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "volume")
-    @Enumerated(EnumType.STRING)
-    private TrunkVolume volume;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trunk")
-    private Set<Car> cars;
+    @Column(name = "model_name")
+    private String modelName;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
+    @OneToMany(mappedBy = "model", cascade = CascadeType.ALL)
+    private List<Car> cars;
 }

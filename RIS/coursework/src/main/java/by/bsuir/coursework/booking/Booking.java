@@ -1,7 +1,7 @@
 package by.bsuir.coursework.booking;
 
 import by.bsuir.coursework.car.Car;
-import by.bsuir.coursework.car.Client;
+import by.bsuir.coursework.user.Client;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -14,7 +14,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -22,7 +21,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "bookings")
@@ -47,12 +46,12 @@ public class Booking {
     @JoinTable(name = "bookings_additional_services",
             joinColumns = @JoinColumn(name = "booking_id"),
             inverseJoinColumns = @JoinColumn(name = "additional_service_id"))
-    private Set<AdditionalService> services;
+    private List<AdditionalService> services;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "client_id")
     private Client client;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "car_id", referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id")
     private Car car;
 
 }

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<head th:insert="~{includes/header::head}"></head>
+<body>
+<nav
+        th:insert="~{includes/menu::menu}">
+</nav>
+
+<div class="row py-5">
+    <div class="col-md-1 order-md-1"></div>
+    <div class="py-5 col-md-10 mb-3 order-md-2">
+        <div class="row d-flex justify-content-center">
+            <h2>Список клиентов</h2>
+        </div>
+        <form th:action="@{/users/search}" method="get">
+            <div class="row d-flex justify-content-center py-2">
+                <div class=" col-md-8 col-xl-8">
+                    <input type="text" class="form-control" name="keyword" th:value="${keyword}" placeholder="Поиск"
+                           size="150">
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center py-2">
+                <div class=" col-md-2 col-xl-2">
+                    <button type="submit" class="btn btn-outline-primary shadow d-block w-100">Поиск</button>
+                </div>
+                <div class=" col-md-2 col-xl-2">
+                    <button type="submit" class="btn btn-outline-primary shadow d-block w-100">Сбросить</button>
+                </div>
+            </div>
+            <a class="p-2 text-dark" href="#">Добавить клиента</a>
+        </form>
+
+        <div class="table-responsive py-3">
+            <table class="table table-striped table-sm py-5" style="text-align: center">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>ФИО</th>
+                    <th>Мобильный номер</th>
+                    <th>Электронная почта</th>
+                    <th>Возраст</th>
+                    <th>Водительский стаж</th>
+                    <th>Адрес</th>
+                    <th>Действия</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.id}"></td>
+                    <td th:text="${user.surname} + ' ' + ${user.name} + ' ' + ${user.patronymic}"></td>
+                    <td th:text="${user.phoneNum}"></td>
+                    <td th:text="${user.email}"></td>
+                    <td th:text="${user.age}"></td>
+                    <td th:text="${user.driving_exp}"></td>
+                    <td th:text="${user.address}"></td>
+                    <td>
+                        <a href="#"><i class="fa fa-minus"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<footer th:insert="~{includes/footer :: footer}" class="bg-white"></footer>
+</body>
+</html>

@@ -41,7 +41,7 @@ public class Specification {
     private Item item;
     @OneToMany(cascade = CascadeType.ALL)
     private Set<SpecItem> specItems;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "specification",cascade = CascadeType.ALL)
     private Set<Operation> operations;
     private boolean active;
 }

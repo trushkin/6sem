@@ -1,4 +1,4 @@
-package by.bsuir.coursework.car;
+package by.bsuir.coursework.user;
 
 import by.bsuir.coursework.booking.Booking;
 import by.bsuir.coursework.user.User;
@@ -17,6 +17,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -41,5 +42,5 @@ public class Client {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
-    private Set<Booking> bookings;
+    private List<Booking> bookings;
 }

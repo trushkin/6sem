@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 @Service
 @RequiredArgsConstructor
@@ -31,6 +30,10 @@ public class EmployeeServiceBean implements EmployeeService {
     public EmployeeDto getEmployee() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
+        String a = """
+                 asd
+                asd
+                """;
         return employeeMapper.toEmployeeDto(employeeRepository
                 .findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found")));

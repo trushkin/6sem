@@ -1,6 +1,6 @@
+package by.bsuir.coursework.car.details;
 
-package by.bsuir.coursework.car;
-
+import by.bsuir.coursework.car.Car;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,22 +16,21 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
-@Table(name = "transmissions")
+@Table(name = "trunks")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Transmission {
+public class Trunk {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "type")
+    @Column(name = "volume")
     @Enumerated(EnumType.STRING)
-    private TransmissionType type;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "transmission")
-    private Set<Car> cars;
-
+    private TrunkVolume volume;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "trunk")
+    private List<Car> cars;
 }

@@ -6,9 +6,10 @@
 </head>
 <div th:fragment="menu"
      class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
-    <h3 th:text="#{menu.company.name}" class="my-0 mr-md-auto font-weight-normal"></h3>
+    <a th:text="#{menu.company.name}" href="/" class="p-2 text-dark my-0 mr-md-auto font-weight-normal"></a>
+<!--    <a class="p-4 text-dark" href="/" th:text="#{menu.company.name}" ></a>-->
     <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="#">Features</a>
+        <a class="p-2 text-dark" href="/users/getAll">Пользователи</a>
         <a class="p-2 text-dark" href="#">Enterprise</a>
         <a class="p-2 text-dark" href="#">Support</a>
         <a class="p-2 text-dark" href="#">Pricing</a>
