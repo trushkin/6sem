@@ -116,7 +116,7 @@
                                 <div class="mb-1 text-muted"
                                      th:text="'Расход топлива: ' + ${car.fuelConsumption} + ' л/100км'"></div>
                                 <div class="mb-1 text-muted"
-                                     th:text="'Коробка передач: ' + #{${'transmission.' + car.transmission}} + ' л/100км'"></div>
+                                     th:text="'Коробка передач: ' + #{${'transmission.' + car.transmission}}"></div>
                                 <div class="mb-1 text-muted"
                                      th:text="${car.aircon} ? 'Кондиционер: есть' : 'Кондиционер: отсутсвует'"></div>
                                 <p class="card-text mb-auto"

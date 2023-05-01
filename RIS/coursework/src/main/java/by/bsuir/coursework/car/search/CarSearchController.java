@@ -4,6 +4,7 @@ import by.bsuir.coursework.car.details.EngineType;
 import by.bsuir.coursework.car.details.TransmissionType;
 import by.bsuir.coursework.car.details.TrunkVolume;
 import by.bsuir.coursework.car.details.VehicleType;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,9 +17,11 @@ import java.util.List;
 @Controller
 public class CarSearchController {
     @PostMapping("/searchForAvailableCars")
-    public String searchForAvailableCars(Model model, @RequestParam LocalDate dateFrom, @RequestParam LocalDate dateTo) {
+    public String searchForAvailableCars(Model model, HttpSession session, @RequestParam LocalDate dateFrom, @RequestParam LocalDate dateTo) {
         model.addAttribute("dateFrom", dateFrom);
         model.addAttribute("dateTo", dateTo);
+        session.setAttribute("user", "Vlad");
+       // session.
         List<CarSearchDto> cars = new ArrayList<>();
         cars.add(CarSearchDto.builder()
                         .id(1)

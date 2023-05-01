@@ -1,9 +1,11 @@
 package by.bsuir.coursework.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,8 +34,21 @@ public class AdminController {
         }
         return "redirect:/admin";
     }
+    @GetMapping("/addUser")
+    public String showAddUserPage(Model model){
+        model.addAttribute("userDto", new UserDto());
+        return "addUser";
+    }
+    @PostMapping("/addUser")
+    public String addUser(Model model, @ModelAttribute UserDto userDto){
+        UserDto temp = userDto;
+        // установить роль CLIENT
+        // пароль по дефолту 123456
+        System.out.println("ad");
+        return "redirect:/users/";
+    }
 
-    @GetMapping("/getAll")
+    @GetMapping("/")
     public String getAllUsers(Model model) {
 //        List<UserDto> users = new ArrayList<>();
 //        users.add(UserDto.builder()

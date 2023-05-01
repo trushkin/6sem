@@ -1,8 +1,5 @@
 package by.bsuir.coursework.user;
 
-import by.bsuir.coursework.user.User;
-import by.bsuir.coursework.user.UserService;
-
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 
 @Controller
-public class RegistrationController {
+public class RegistrationAndSignInController {
 
     @Autowired
     private UserService userService;

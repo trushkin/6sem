@@ -19,6 +19,7 @@ public class UserMapper {
                 .driving_exp(user.getClient().getDriving_exp())
                 .address(user.getClient().getAddress())
                 .passport(user.getClient().getPassport())
+                .password(user.getPassword())
                 .build();
     }
 }
