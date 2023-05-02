@@ -48,8 +48,6 @@ public class Car {
     private Integer year;
     @Column(name="mileage")
     private Integer mileage;
-    @Column(name="vin")
-    private String vin;
     @Column(name="plate_num")
     private Integer plateNum;
     @OneToMany(mappedBy = "car", cascade = CascadeType.ALL)

@@ -8,6 +8,7 @@ import by.bsuir.coursework.car.details.VehicleType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;

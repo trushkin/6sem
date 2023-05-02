@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<head th:insert="~{includes/header::head}"></head>
+<body>
+<div class="container">
+    <div class="col-md-1 order-md-1"></div>
+    <div class="py-5 col-md-11 mb-3 order-md-2">
+        <form method="post" th:object="${userDto}" th:action="@{/registration}">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 mb-3">
+                    <label>Имя</label>
+                    <input type="text" class="form-control" th:field="*{name}" autocomplete="off"
+                           pattern="[A-Za-zА-яа-я]{2,40}" required
+                           oninvalid="this.setCustomValidity('Требуются символы латинского или русского алфавита')"
+                           oninput="setCustomValidity('')">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Фамилия</label>
+                    <input type="text" class="form-control" th:field="*{surname}" autocomplete="off"
+                           pattern="[A-Za-zА-яа-я]{2,40}" required
+                           oninvalid="this.setCustomValidity('Требуются символы латинского или русского алфавита');"
+                           oninput="setCustomValidity('')"
+                    >
+                </div>
+            </div>
+            <label>Отчество</label>
+            <input type="text" class="form-control" th:field="*{patronymic}" autocomplete="off"
+                   placeholder="(Необязательно)"
+                   pattern="[A-Za-zА-яа-я]{2,40}"
+                   oninvalid="this.setCustomValidity('Требуются символы латинского или русского алфавита')"
+                   oninput="setCustomValidity('')">
+            <label>Мобильный номер</label>
+            <input type="tel" class="form-control" th:field="*{phoneNum}" autocomplete="off"
+                   pattern="[0-9]{12}" required
+                   oninvalid="this.setCustomValidity('Введите полный номер (12 знаков)')"
+                   oninput="setCustomValidity('')">
+            <label>Электронная почта</label>
+            <input type="email" class="form-control" th:field="*{email}" autocomplete="off"
+                   pattern="[a-z0-9.]{2,40}@[a-z0-9]{2,40}.[a-z0-9]{2,40}" required
+                   oninvalid="this.setCustomValidity('Введите эл. почту например blabla@mail.com')"
+                   oninput="setCustomValidity('')">
+            <label>Пароль</label>
+            <input type="password" class="form-control" th:field="*{password}" autocomplete="off"
+                   pattern="[a-zA-Z0-9]{6,40}" required
+                   oninvalid="this.setCustomValidity('Пароль должен состоять минимум из 6 символов A-Z, 0-9')"
+                   oninput="setCustomValidity('')">
+            <label>Паспорт</label>
+            <input type="text" class="form-control" th:field="*{passport}" autocomplete="off" required>
+            <label>Адрес</label>
+            <input type="text" class="form-control" th:field="*{address}" autocomplete="off" required>
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-6 mb-3">
+                    <label>Возраст</label>
+                    <input type="number" class="form-control" th:field="*{age}" autocomplete="off"
+                           th:min="21" th:max="120" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label>Стаж вождения</label>
+                    <input type="number" class="form-control" th:field="*{driving_exp}" autocomplete="off"
+                           th:min="2" th:max="99" required>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <div class="row d-flex">
+                <div class="col-md-4 order-md-1"></div>
+                <div class="py-2 col-md-4 mb-3 order-md-2">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Зарегистрироваться</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<footer th:insert="~{includes/footer :: footer}" class="bg-white"></footer>
+</body>
+</html>

@@ -7,15 +7,15 @@
 <div th:fragment="menu"
      class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
     <a th:text="#{menu.company.name}" href="/" class="p-2 text-dark my-0 mr-md-auto font-weight-normal"></a>
-<!--    <a class="p-4 text-dark" href="/" th:text="#{menu.company.name}" ></a>-->
     <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark" href="#">Добавить автомобиль</a>
-        <a class="p-2 text-dark" href="#">Доп. услуги</a>
+        <a class="p-2 text-dark" href="/addCar/">Добавить автомобиль</a>
         <a class="p-2 text-dark" href="/users/">Пользователи</a>
         <a class="p-2 text-dark" href="#">О нас</a>
-        <a class="p-2 text-dark" href="#">Мои бронирования</a>
-        <a class="p-2 text-dark" href="#">Профиль</a>
-        <a class="p-2 text-dark" href="#" th:text="${session.user}"></a>
+<!--        <a th:if="${session.user != null}" class="p-2 text-dark" href="#">О нас</a>-->
+<!--        <a th:if="${session.user == null}" class="p-2 text-dark" href="#">asdasd</a>-->
+        <a class="p-2 text-dark" href="#">Бронирования</a>
+        <a class="p-2 text-dark" href="/profile">Профиль</a>
+<!--        <a class="p-2 text-dark" href="#" th:text="${session.user}"></a>-->
     </nav>
     <a class="btn btn-outline-primary" href="/login">Войти</a>
     <a class="btn btn-outline-primary" href="#">Выйти</a>
