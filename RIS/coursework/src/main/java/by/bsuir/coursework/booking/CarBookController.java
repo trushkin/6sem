@@ -5,6 +5,7 @@ import by.bsuir.coursework.car.details.TransmissionType;
 import by.bsuir.coursework.car.details.TrunkVolume;
 import by.bsuir.coursework.car.details.VehicleType;
 import by.bsuir.coursework.car.search.CarSearchDto;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class CarBookController {
     @GetMapping("/book/{id}")
-    public String showBookingDetails(Model model, @PathVariable Integer id) {
+    public String showBookingDetails(Model model, HttpSession session, @PathVariable Integer id) {
         CarSearchDto car = (CarSearchDto.builder()
                 .id(1)
                 .brand("Volkswagen")

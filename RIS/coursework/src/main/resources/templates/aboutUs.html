@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<head th:insert="~{includes/header::head}"></head>
+<nav
+        th:insert="~{includes/menu::menu}">
+</nav>
+<body>
+<div class="container">
+    <div class="col-md-1 order-md-1"></div>
+    <div class="py-5 col-md-11 mb-3 order-md-2 mx-auto">
+      <div class="row">
+          <span>22RT-Rental - это компания, специализирующаяся на аренде автомобилей в Минске.
+              Мы предлагаем широкий выбор автомобилей различных классов и марок, начиная от экономичных моделей и
+              заканчивая представительскими автомобилями премиум-класса.</span>
+      </div>
+        <div class="row">
+          <span>Наша цель - обеспечить нашим клиентам максимальный комфорт и свободу передвижения,
+              путешествуя на наших автомобилях. Мы гарантируем высокий уровень сервиса и техническое состояние автомобилей,
+              что позволяет нашим клиентам чувствовать себя уверенно и безопасно на дорогах.</span>
+        </div>
+        <div class="row">
+          <span>Мы готовы предложить индивидуальные условия аренды и гибкую систему скидок для наших клиентов,
+              чтобы сделать наши автомобили доступными для всех. Мы всегда стараемся быть на связи с нашими клиентами,
+              готовы помочь с любыми вопросами и обеспечить их максимальным удобством при аренде автомобиля.</span>
+        </div>
+        <div class="row">
+          <span>Выбирая 22RT-Rental, вы выбираете надежного партнера в путешествии и деловых поездках,
+              который поможет вам насладиться своим путешествием и достичь ваших целей без стресса и забот.</span>
+        </div><div class="row py-5">
+          <span>Где мы находимся:</span>
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1966.3350801869283!2d27.74868752268869!3d53.81930246343923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dbd348d4150807%3A0xa1e963f0e164eb3a!2z0KDQtdGB0L_Rg9Cx0LvQuNC60LDQvdGB0LrQuNC5INGB0L_QvtGA0YLQuNCy0L3Qvi3RgtC10YXQvdC40YfQtdGB0LrQuNC5INC60L7QvNC_0LvQtdC60YEg0JTQntCh0JDQkNCk!5e0!3m2!1sru!2sby!4v1683102730515!5m2!1sru!2sby" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+    </div>
+</div>
+<footer th:insert="~{includes/footer :: footer}" class="bg-white"></footer>
+</body>
+</html>

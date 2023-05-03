@@ -42,11 +42,11 @@ public class Booking {
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private BookingStatus status;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "bookings_additional_services",
-            joinColumns = @JoinColumn(name = "booking_id"),
-            inverseJoinColumns = @JoinColumn(name = "additional_service_id"))
-    private List<AdditionalService> services;
+//    @ManyToMany(cascade = CascadeType.ALL)
+//    @JoinTable(name = "bookings_additional_services",
+//            joinColumns = @JoinColumn(name = "booking_id"),
+//            inverseJoinColumns = @JoinColumn(name = "additional_service_id"))
+//    private List<AdditionalService> services;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "client_id")
     private Client client;

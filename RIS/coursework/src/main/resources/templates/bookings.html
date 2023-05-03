@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<head th:insert="~{includes/header::head}"></head>
+<body>
+<nav
+        th:insert="~{includes/menu::menu}">
+</nav>
+<div class="row py-5">
+    <div class="col-md-1 order-md-1"></div>
+    <div class="py-5 col-md-10 mb-3 order-md-2">
+        <div class="row d-flex justify-content-center">
+            <h2>Список бронирований</h2>
+        </div>
+        <form th:action="@{/bookungs/search}" method="get">
+            <div class="row d-flex justify-content-center py-2">
+                <div class=" col-md-8 col-xl-8">
+                    <input type="text" class="form-control" name="keyword" th:value="${keyword}" placeholder="Поиск"
+                           size="150">
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center py-2">
+                <div class=" col-md-2 col-xl-2">
+                    <button type="submit" class="btn btn-outline-primary shadow d-block w-100">Поиск</button>
+                </div>
+                <div class=" col-md-2 col-xl-2">
+                    <button type="submit" class="btn btn-outline-primary shadow d-block w-100">Сбросить</button>
+                </div>
+            </div>
+        </form>
+
+        <div class="table-responsive py-3">
+            <table class="table table-striped table-sm py-5" style="text-align: center">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Автомобиль</th>
+                    <th>Клиент</th>
+                    <th>Начало арены</th>
+                    <th>Конец аренды</th>
+                    <th>Стоимость</th>
+                    <th>Действия</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="booking : ${bookings}">
+                    <td th:text="${booking.id}"></td>
+                    <td th:text="${booking.brand} + ' ' + ${booking.model}"></td>
+                    <td th:text="${booking.clientSurname} + ' ' + ${booking.clientName} + ' ' + ${booking.clientPatronymic}"></td>
+                    <td th:text="${booking.pickupDate}"></td>
+                    <td th:text="${booking.dropDate}"></td>
+                    <td th:text="${booking.price}"></td>
+                    <td>
+                        <a href="#"><i class="fa fa-minus"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<footer th:insert="~{includes/footer :: footer}" class="bg-white"></footer>
+</body>
+</html>
