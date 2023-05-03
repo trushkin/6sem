@@ -58,7 +58,7 @@
                     <td th:text="${user.driving_exp}"></td>
                     <td th:text="${user.address}"></td>
                     <td>
-                        <a href="#"><i class="fa fa-minus"></i></a>
+                        <a th:href="@{/users/delete/{id}(id=${user.id})}" ><i class="fa fa-minus"></i></a>
                     </td>
                 </tr>
                 </tbody>

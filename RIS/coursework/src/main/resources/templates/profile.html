@@ -30,8 +30,10 @@
                         <div class="row">
                             <div class="col-md-4 order-md-1"></div>
                             <div class="col-md-4 order-md-2">
-                                <button class="btn btn-primary shadow d-block w-100" type="submit">Войти</button>
-                                <a style="text-align: center" href="/registration">Регистрация</a>
+                                <button class="btn btn-primary shadow d-block w-100" type="submit">Изменить</button>
+                                <div th:if="${error != null}">
+                                    <div th:text="${error}"></div>
+                                </div>
                             </div>
 
                         </div>

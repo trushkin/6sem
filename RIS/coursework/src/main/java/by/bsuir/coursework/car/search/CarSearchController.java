@@ -1,10 +1,12 @@
 package by.bsuir.coursework.car.search;
 
+import by.bsuir.coursework.car.CarService;
 import by.bsuir.coursework.car.details.EngineType;
 import by.bsuir.coursework.car.details.TransmissionType;
 import by.bsuir.coursework.car.details.TrunkVolume;
 import by.bsuir.coursework.car.details.VehicleType;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,13 +18,15 @@ import java.util.List;
 
 @Controller
 public class CarSearchController {
+    @Autowired
+    CarService carService;
+
     @PostMapping("/searchForAvailableCars")
     public String searchForAvailableCars(Model model, HttpSession session, @RequestParam LocalDate dateFrom, @RequestParam LocalDate dateTo) {
         model.addAttribute("dateFrom", dateFrom);
         model.addAttribute("dateTo", dateTo);
-        session.setAttribute("user", "Vlad");
-       // session.
-        List<CarSearchDto> cars = new ArrayList<>();
+//        List<CarSearchDto> cars = carService.findAvailableCars(dateFrom, dateTo);
+        List<CarSearchDto> cars = carService.filterAvailableCars(dateFrom, dateTo);
 //        cars.add(CarSearchDto.builder()
 //                        .id(1)
 //                        .brand("Volkswagen")
@@ -37,20 +41,20 @@ public class CarSearchController {
 //                        .trunk(TrunkVolume.ONE_LARGE_ONE_SMALL)
 //                        .vehicle(VehicleType.HATCHBACK)
 //                .build());
-        cars.add(CarSearchDto.builder()
-                        .id(2)
-                        .brand("Ford")
-                        .model("Focus")
-                        .aircon(false)
-                        .capacity(5)
-                        .engine(EngineType.DIESEL)
-                        .transmission(TransmissionType.MANUAL)
-                        .performance(95)
-                        .fuelConsumption(5.4)
-                        .pricePerDay(35)
-                        .trunk(TrunkVolume.TWO_LARGE)
-                        .vehicle(VehicleType.WAGON)
-                .build());
+//        cars.add(CarSearchDto.builder()
+//                .id(2)
+//                .brand("Ford")
+//                .model("Focus")
+//                .aircon(false)
+//                .capacity(5)
+//                .engine(EngineType.DIESEL)
+//                .transmission(TransmissionType.MANUAL)
+//                .performance(95)
+//                .fuelConsumption(5.4)
+//                .pricePerDay(35)
+//                .trunk(TrunkVolume.TWO_LARGE)
+//                .vehicle(VehicleType.WAGON)
+//                .build());
         model.addAttribute("cars", cars);
         return "carSearch";
     }

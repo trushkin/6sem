@@ -30,6 +30,6 @@ public class CarSearchDto {
     private TransmissionType transmission;
     private EngineType engine;
     private TrunkVolume trunk;
-    private List<Booking> bookings;
+//    private List<Booking> bookings;
 
 }

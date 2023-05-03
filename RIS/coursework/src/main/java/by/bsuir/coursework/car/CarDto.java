@@ -33,8 +33,5 @@ public class CarDto {
     private String engine;
     private String trunk;
 
-    public CarDto(String transmission, String trunk) {
-        this.transmission = transmission;
-        this.trunk = trunk;
-    }
+
 }

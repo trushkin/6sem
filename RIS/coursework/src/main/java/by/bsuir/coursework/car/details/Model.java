@@ -35,4 +35,9 @@ public class Model {
     private Brand brand;
     @OneToMany(mappedBy = "model", cascade = CascadeType.ALL)
     private List<Car> cars;
+
+    public Model(String modelName, Brand brand) {
+        this.modelName = modelName;
+        this.brand = brand;
+    }
 }

@@ -11,12 +11,10 @@
         <a class="p-2 text-dark" href="/addCar/">Добавить автомобиль</a>
         <a class="p-2 text-dark" href="/users/">Пользователи</a>
         <a class="p-2 text-dark" href="/aboutUs">О нас</a>
-<!--        <a th:if="${session.user != null}" class="p-2 text-dark" href="#">О нас</a>-->
-<!--        <a th:if="${session.user == null}" class="p-2 text-dark" href="#">asdasd</a>-->
         <a class="p-2 text-dark" href="/bookings/">Бронирования</a>
         <a class="p-2 text-dark" href="/profile">Профиль</a>
-<!--        <a class="p-2 text-dark" href="#" th:text="${session.user}"></a>-->
+        <a class="p-2 text-dark" href="#" th:text="${session.user?.id}"></a>
     </nav>
     <a class="btn btn-outline-primary" href="/login">Войти</a>
-    <a class="btn btn-outline-primary" href="#">Выйти</a>
+    <a class="btn btn-outline-primary" href="/logout">Выйти</a>
 </div>

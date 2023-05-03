@@ -20,6 +20,11 @@ public class ProfileController {
     }
     @PostMapping
     public String login(Model model, HttpSession session, @RequestParam String oldPassword, @RequestParam String newPassword) {
+        UserDto user = (UserDto) session.getAttribute("user");
+        if (!userService.changePassword(oldPassword, newPassword, user.getEmail())) {
+            model.addAttribute("error", "Пароли совпадают");
+            return "profile";
+        }
         return "index";
     }
 }

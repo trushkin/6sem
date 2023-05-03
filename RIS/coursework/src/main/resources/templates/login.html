@@ -11,7 +11,7 @@
         <div class="col-md-3 order-md-1"></div>
         <div class="col-md-6 order-md-2 py-5">
             <div class="py-5">
-                <form method="post" th:action="@{/users/addUser}">
+                <form method="post" th:action="@{/login}">
                     <div class="justify-content-center">
                         <label>Электронная почта</label>
                         <input type="email" name="email" class="form-control" autocomplete="off"
@@ -28,6 +28,9 @@
                             <div class="col-md-4 order-md-1"></div>
                             <div class="col-md-4 order-md-2">
                                 <button class="btn btn-primary shadow d-block w-100" type="submit">Войти</button>
+                                <div th:if="${error != null}">
+                                    <div th:text="${error}"></div>
+                                </div>
                                 <a style="text-align: center" href="/registration">Регистрация</a>
                             </div>
 

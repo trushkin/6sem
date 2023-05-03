@@ -1,6 +1,7 @@
 package by.bsuir.coursework.user;
 
 
+import jakarta.servlet.http.HttpSession;
 import org.hibernate.annotations.GeneratorType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,7 +23,11 @@ public class RegistrationController {
         return "registration";
     }
     @PostMapping
-    public String registration(Model model, @ModelAttribute UserDto userDto){
+    public String registration(Model model, HttpSession session, @ModelAttribute UserDto userDto){
+        if (!userService.addClient(userDto, session)){
+            model.addAttribute("error", "Пользователь с таким email уже существует");
+            return "registration";
+        }
         return "index";
     }
 

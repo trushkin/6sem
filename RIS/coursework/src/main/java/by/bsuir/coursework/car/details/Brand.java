@@ -29,4 +29,8 @@ public class Brand {
     private String brandName;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "brand")
     private List<Model> models;
+
+    public Brand(String brandName) {
+        this.brandName = brandName;
+    }
 }
