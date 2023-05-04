@@ -27,22 +27,6 @@ public class AdminController {
         return "admin";
     }
 
-//    @PostMapping("/admin")
-//    public String deleteUser(@RequestParam(required = true, defaultValue = "") Integer userId,
-//                             @RequestParam(required = true, defaultValue = "") String action,
-//                             Model model) {
-//        if (action.equals("delete")) {
-//            userService.deleteUser(userId);
-//        }
-//        return "redirect:/admin";
-//    }
-//public boolean deleteUser(Integer userId) {
-//    if (userRepository.findById(userId).isPresent()) {
-//        userRepository.deleteById(userId);
-//        return true;
-//    }
-//    return false;
-//}
     @GetMapping("/addUser")
     public String showAddUserPage(Model model){
         model.addAttribute("userDto", new UserDto());
@@ -82,9 +66,4 @@ public class AdminController {
         return "users";
     }
 
-//    @GetMapping("/admin/gt/{userId}")
-//    public String  gtUser(@PathVariable("userId") Long userId, Model model) {
-//        model.addAttribute("allUsers", userService.usergtList(userId));
-//        return "admin";
-//    }
 }

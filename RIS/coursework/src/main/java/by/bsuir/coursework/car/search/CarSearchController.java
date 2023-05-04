@@ -5,10 +5,12 @@ import by.bsuir.coursework.car.details.EngineType;
 import by.bsuir.coursework.car.details.TransmissionType;
 import by.bsuir.coursework.car.details.TrunkVolume;
 import by.bsuir.coursework.car.details.VehicleType;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -20,41 +22,33 @@ import java.util.List;
 public class CarSearchController {
     @Autowired
     CarService carService;
-
+//    @GetMapping("/searchForAvailableCars")
+//    public String showAvailableCarsPage(Model model) {
+//        List<CarSearchDto> cars = carService.findAvailableCars((LocalDate) model.getAttribute("dateFrom"), (LocalDate) model.getAttribute("dateTo"));
+//        model.addAttribute("cars", cars);
+//        return "carSearch";
+//    }
     @PostMapping("/searchForAvailableCars")
     public String searchForAvailableCars(Model model, HttpSession session, @RequestParam LocalDate dateFrom, @RequestParam LocalDate dateTo) {
         model.addAttribute("dateFrom", dateFrom);
         model.addAttribute("dateTo", dateTo);
-//        List<CarSearchDto> cars = carService.findAvailableCars(dateFrom, dateTo);
-        List<CarSearchDto> cars = carService.filterAvailableCars(dateFrom, dateTo);
-//        cars.add(CarSearchDto.builder()
-//                        .id(1)
-//                        .brand("Volkswagen")
-//                        .model("Golf")
-//                        .aircon(true)
-//                        .capacity(4)
-//                        .engine(EngineType.GASOLINE)
-//                        .transmission(TransmissionType.AUTOMATED_MANUAL)
-//                        .performance(120)
-//                        .fuelConsumption(7.5)
-//                        .pricePerDay(45)
-//                        .trunk(TrunkVolume.ONE_LARGE_ONE_SMALL)
-//                        .vehicle(VehicleType.HATCHBACK)
-//                .build());
-//        cars.add(CarSearchDto.builder()
-//                .id(2)
-//                .brand("Ford")
-//                .model("Focus")
-//                .aircon(false)
-//                .capacity(5)
-//                .engine(EngineType.DIESEL)
-//                .transmission(TransmissionType.MANUAL)
-//                .performance(95)
-//                .fuelConsumption(5.4)
-//                .pricePerDay(35)
-//                .trunk(TrunkVolume.TWO_LARGE)
-//                .vehicle(VehicleType.WAGON)
-//                .build());
+        session.setAttribute("dateFrom", dateFrom);
+        session.setAttribute("dateTo", dateTo);
+        List<CarSearchDto> cars = carService.findAvailableCars(dateFrom, dateTo);
+        model.addAttribute("cars", cars);
+        return "carSearch";
+    }
+
+    @PostMapping("/filterAvailableCars")
+    public String filterAvailableCars(Model model, HttpSession session, @RequestParam String engine, @RequestParam String vehicleType,
+                                      @RequestParam String trunkVolume, @RequestParam String transmission, @RequestParam String price) {
+        CarFilter carFilter;
+        if (price.isBlank()) {
+            carFilter = new CarFilter(engine, vehicleType, trunkVolume, transmission, null);
+        } else {
+            carFilter = new CarFilter(engine, vehicleType, trunkVolume, transmission, Integer.parseInt(price));
+        }
+        List<CarSearchDto> cars = carService.filterAvailableCars((LocalDate) session.getAttribute("dateFrom"), (LocalDate) session.getAttribute("dateTo"), carFilter);
         model.addAttribute("cars", cars);
         return "carSearch";
     }

@@ -15,7 +15,7 @@
         <div class="row d-flex justify-content-center">
             <h2>Список бронирований</h2>
         </div>
-        <form th:action="@{/bookungs/search}" method="get">
+        <form th:action="@{/bookings/search}" method="get">
             <div class="row d-flex justify-content-center py-2">
                 <div class=" col-md-8 col-xl-8">
                     <input type="text" class="form-control" name="keyword" th:value="${keyword}" placeholder="Поиск"
@@ -54,7 +54,7 @@
                     <td th:text="${booking.dropDate}"></td>
                     <td th:text="${booking.price}"></td>
                     <td>
-                        <a href="#"><i class="fa fa-minus"></i></a>
+                        <a th:href="@{/bookings/delete/{id}(id=${booking.id})}"><i class="fa fa-minus"></i></a>
                     </td>
                 </tr>
                 </tbody>

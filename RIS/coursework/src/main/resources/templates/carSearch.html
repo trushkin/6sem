@@ -12,89 +12,65 @@
 <div th:insert="~{includes/datepicker::datepicker}">
 </div>
 
-<!--<p th:text="${dateFrom} + ' - ' + ${dateTo}"-->
-<!--   class="btn btn-light text-start shadow d-block w-100"></p>-->
-
-<!--<div th:switch="${cars}">-->
-<!--    <h2 th:case="null">Нет свободных машин</h2>-->
-<!--    <div th:case="*">-->
-<!--        <h2>Свободные автомобили</h2>-->
-<!--        <table>-->
-<!--            <tbody>-->
-
-<!--            <tr th:each="car : ${cars}">-->
-<!--                <td><img th:src="@{${'/img/' + car.brand + '_' + car.model + '.jpg'}}"/></td>-->
-<!--                <td th:text="${car.brand} + ' ' + ${car.model}"></td>-->
-<!--                <td><a th:href="@{/book/{id}(id=${car.id})}">Забронировать</a></td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--        </table>-->
-<!--    </div>-->
-<!--</div>-->
 <div class="row">
     <div class="col-md-4 order-md-1">
         <div class="container">
-            <h4 class="col-md-8 mb-3">Фильтры</h4>
-            <div class="col-md-8 mb-3">
-                <label>Тип двигателя</label>
-                <select class="custom-select d-block w-100" id="engine">
-                    <option value="">Выберите...</option>
-                    <option th:each="engine : ${T(by.bsuir.coursework.car.details.EngineType).values()}"
-                            th:value="${engine}"
-                            th:text="#{${'engine.' + engine}}">engine
-                    </option>
-                </select>
-            </div>
-            <div class="col-md-8 mb-3">
-                <label>Тип кузова</label>
-                <select class="custom-select d-block w-100" id="vehicleType">
-                    <option value="">Выберите...</option>
-                    <option th:each="vehicleType : ${T(by.bsuir.coursework.car.details.VehicleType).values()}"
-                            th:value="${vehicleType}"
-                            th:text="#{${'vehicle.' + vehicleType}}">vehicleType
-                    </option>
-                </select>
-            </div>
-            <div class="col-md-8 mb-3">
-                <label>Объем багажника</label>
-                <select class="custom-select d-block w-100" id="trunkVolume">
-                    <option value="">Выберите...</option>
-                    <option th:each="trunkVolume : ${T(by.bsuir.coursework.car.details.TrunkVolume).values()}"
-                            th:value="${trunkVolume}"
-                            th:text="#{${'trunk.' + trunkVolume}}">trunkVolume
-                    </option>
-                </select>
-            </div>
-            <div class="col-md-8 mb-3">
-                <label>Тип коробки передач</label>
-                <select class="custom-select d-block w-100" id="transmission">
-                    <option value="">Выберите...</option>
-                    <option th:each="transmission : ${T(by.bsuir.coursework.car.details.TransmissionType).values()}"
-                            th:value="${transmission}"
-                            th:text="#{${'transmission.' + transmission}}">trunkVolume
-                    </option>
-                </select>
-            </div>
-            <div class="col-md-8 mb-3">
-                <label>Цена за сутки</label>
-                <select class="custom-select d-block w-100" id="price">
-                    <option value="">Выберите...</option>
-                    <option value="50">До 50$</option>
-                    <option value="90">До 90$</option>
-                    <option value="130">До 130$</option>
-                    <option value="170">До 170$</option>
-                    </option>
-                </select>
-            </div>
-<!--            <div class="col-md-8 mb-3">-->
-<!--                <div class="custom-control custom-checkbox">-->
-<!--                    <input type="checkbox" class="custom-control-input" id="aircon">-->
-<!--                    <label class="custom-control-label" for="aircon">Кондиционер</label>-->
-<!--                </div>-->
-<!--            </div>-->
-            <div class="col-md-8 mb-3">
-                <button class="btn btn-primary btn-lg btn-block" type="submit">Поиск</button>
-            </div>
+            <form method="post" th:action="@{/filterAvailableCars}">
+                <h4 class="col-md-8 mb-3">Фильтры</h4>
+                <div class="col-md-8 mb-3">
+                    <label>Тип двигателя</label>
+                    <select class="custom-select d-block w-100" name="engine" id="engine">
+                        <option value="">Выберите...</option>
+                        <option th:each="engine : ${T(by.bsuir.coursework.car.details.EngineType).values()}"
+                                th:value="${engine}"
+                                th:text="#{${'engine.' + engine}}">
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-8 mb-3">
+                    <label>Тип кузова</label>
+                    <select class="custom-select d-block w-100" name="vehicleType" id="vehicleType">
+                        <option value="">Выберите...</option>
+                        <option th:each="vehicleType : ${T(by.bsuir.coursework.car.details.VehicleType).values()}"
+                                th:value="${vehicleType}"
+                                th:text="#{${'vehicle.' + vehicleType}}">
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-8 mb-3">
+                    <label>Объем багажника</label>
+                    <select class="custom-select d-block w-100" name="trunkVolume" id="trunkVolume">
+                        <option value="">Выберите...</option>
+                        <option th:each="trunkVolume : ${T(by.bsuir.coursework.car.details.TrunkVolume).values()}"
+                                th:value="${trunkVolume}"
+                                th:text="#{${'trunk.' + trunkVolume}}">
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-8 mb-3">
+                    <label>Тип коробки передач</label>
+                    <select class="custom-select d-block w-100" name="transmission" id="transmission">
+                        <option value="">Выберите...</option>
+                        <option th:each="transmission : ${T(by.bsuir.coursework.car.details.TransmissionType).values()}"
+                                th:value="${transmission}"
+                                th:text="#{${'transmission.' + transmission}}">
+                        </option>
+                    </select>
+                </div>
+                <div class="col-md-8 mb-3">
+                    <label>Цена за сутки</label>
+                    <select class="custom-select d-block w-100" name="price" id="price">
+                        <option value="">Выберите...</option>
+                        <option value="50">До 50$</option>
+                        <option value="90">До 90$</option>
+                        <option value="130">До 130$</option>
+                        <option value="170">До 170$</option>
+                    </select>
+                </div>
+                <div class="col-md-8 mb-3">
+                    <button class="btn btn-primary btn-lg btn-block" type="submit">Поиск</button>
+                </div>
+            </form>
         </div>
     </div>
     <div class="col-md-8 order-md-2">
@@ -122,7 +98,8 @@
                                 <p class="card-text mb-auto"
                                    th:text="'Это ' + #{${'vehicle.' + car.vehicle}} + ' мощностью ' + ${car.performance} + 'л.с. Автомобиль обладает вместимостью ' + ${car.capacity} + ' пассажира(ов) и багажник объемом ' + #{${'trunk.' + car.trunk}} + '.'">
                                 </p>
-                                <a th:href="@{/book/{id}(id=${car.id})}">Забронировать</a>
+                                <a th:if="${session.user != null}" th:href="@{/book/{id}(id=${car.id})}">Забронировать</a>
+                                <a th:if="${session.user == null}">Бронирование доступно только авторизированным пользователям</a>
                             </div>
                             <img class="card-img-right flex-auto d-none d-md-block"
                                  th:src="@{${'/img/' + car.brand + '_' + car.model + '.jpg'}}"
@@ -132,6 +109,7 @@
                     <!--                </div>-->
                 </th:block>
             </div>
+
         </div>
     </div>
 </div>
