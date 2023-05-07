@@ -17,7 +17,6 @@ import by.bsuir.coursework.car.search.CarSearchDto;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -101,7 +100,7 @@ public class CarService {
             queryForAvailableCars += vehicleId;
         }
         if (filter.getPrice() != null){
-            queryForAvailableCars += " and c1.price_per_day";
+            queryForAvailableCars += " and c1.price_per_day <";
             queryForAvailableCars += filter.getPrice();
         }
         Query query = entityManager.createNativeQuery(queryForAvailableCars, Car.class);
