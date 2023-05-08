@@ -8,7 +8,7 @@ import jakarta.ws.rs.core.Response;
 
 import java.io.File;
 import java.net.URL;
-
+//результат работы программы - XML_Screen.png
 @Path("/farm")
 public class FarmService {
     @GET
