@@ -105,7 +105,7 @@ public class CarService {
         }
         Query query = entityManager.createNativeQuery(queryForAvailableCars, Car.class);
         query.setParameter("dateFrom", dateFrom);
-        query.setParameter("dateTo", dateFrom);
+        query.setParameter("dateTo", dateTo);
         List<Car> cars = query.getResultList();
         return cars.stream().map(carMapper::toCarSearchDto).toList();
     }
