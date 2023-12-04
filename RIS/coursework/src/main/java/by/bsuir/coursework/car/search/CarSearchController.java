@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,7 +23,8 @@ import java.util.List;
 public class CarSearchController {
     @Autowired
     CarService carService;
-//    @GetMapping("/searchForAvailableCars")
+
+    //    @GetMapping("/searchForAvailableCars")
 //    public String showAvailableCarsPage(Model model) {
 //        List<CarSearchDto> cars = carService.findAvailableCars((LocalDate) model.getAttribute("dateFrom"), (LocalDate) model.getAttribute("dateTo"));
 //        model.addAttribute("cars", cars);
@@ -36,6 +38,9 @@ public class CarSearchController {
         session.setAttribute("dateTo", dateTo);
         List<CarSearchDto> cars = carService.findAvailableCars(dateFrom, dateTo);
         model.addAttribute("cars", cars);
+//        String obj = new RestTemplate().getForObject("http://192.168.56.1:8081/adv", String.class);
+        String obj = new RestTemplate().getForObject("http://advrental:8081/adv", String.class);
+        session.setAttribute("adv", obj);
         return "carSearch";
     }
 

@@ -1,0 +1,5 @@
+FROM openjdk:17.0.2-jdk-slim-buster
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+COPY ./db_backup.sql /docker-entrypoint-initdb.d/
+ENTRYPOINT ["java","-jar","/app.jar"]

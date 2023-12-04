@@ -1,10 +1,5 @@
 package by.bsuir.coursework.car;
 
-import by.bsuir.coursework.car.details.Engine;
-import by.bsuir.coursework.car.details.Model;
-import by.bsuir.coursework.car.details.Transmission;
-import by.bsuir.coursework.car.details.Trunk;
-import by.bsuir.coursework.car.details.Vehicle;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,6 +13,7 @@ import lombok.Setter;
 @Builder
 public class CarDto {
     private Integer id;
+
     private boolean aircon;
     private Integer performance;
     private Integer capacity;

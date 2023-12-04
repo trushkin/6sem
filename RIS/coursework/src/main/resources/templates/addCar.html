@@ -18,7 +18,7 @@
                     <label>Марка</label>
                     <input type="text" class="form-control" th:field="*{brand}" autocomplete="off"
                            required
-                           pattern="[A-Za-z]{2,40}"
+                           pattern="[A-Za-z_]{2,40}"
                            oninvalid="this.setCustomValidity('Требуются символы латинского алфавита')"
                            oninput="setCustomValidity('')">
                 </div>
@@ -26,7 +26,7 @@
                     <label>Модель</label>
                     <input type="text" class="form-control" th:field="*{model}" autocomplete="off"
                            required
-                           pattern="[A-Za-z]{2,40}"
+                           pattern="[A-Za-z0-9_]{2,40}"
                            oninvalid="this.setCustomValidity('Требуются символы латинского алфавита')"
                            oninput="setCustomValidity('')">
                 </div>
